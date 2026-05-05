@@ -1,0 +1,31 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/fetools/work_area/frontend/Batch_11/jonathanezekiels/ALU_VERIFICATION1
+valu_design
+!s110 1777972380
+!i10b 1
+!s100 ?ALIn9FSH327NzG9ifP>N3
+ICc`1k[N97jXB:GSD3EIQj3
+VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1777972379
+8alu_design.v
+Falu_design.v
+L0 1
+OE;L;10.6c;65
+r1
+!s85 0
+31
+!s108 1777972380.000000
+!s107 alu_design.v|
+!s90 alu_design.v|
+!i113 0
+o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+tCvgOpt 0

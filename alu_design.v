@@ -14,6 +14,7 @@ module alu_design #(parameter WIDTH=4)(
 				count<=count+1;
 		else	
 			count<=0;
+	end
 	always @(posedge CLK or posedge RST) begin    //Asynchronous Active High RESET
 		if(RST) begin
 			RES<=0;
@@ -133,6 +134,7 @@ module alu_design #(parameter WIDTH=4)(
 									3: begin
 										RES<=tempA*tempB;
 										count<=0;
+									end
 									default: count<=0;
 								endcase
 							end
@@ -154,6 +156,7 @@ module alu_design #(parameter WIDTH=4)(
                                                                         3: begin
                                                                                 RES<=temp * tempB;
                                                                                 count<=0;
+									end
                                                                         default: count<=0;
                                                                 endcase
 							end
@@ -164,12 +167,26 @@ module alu_design #(parameter WIDTH=4)(
 						endcase
 						11: case(INP_VALID) // CMD - 11: SIGNED ADDITION
 							3: begin
-								
+								RES<=$signed(OPA) + $signed(OPB);
+								OFLOW<=(OPA[WIDTH-1] == OPB[WIDTH-1]) && (RES[WIDTH-1] != OPA[WIDTH-1]);
+							end
+                                                        default: begin
+                                                                        RES<=0;
+                                                                        ERR<=1;
+                                                        end
 						endcase
-						12:	// CMD - 12: SIGNED SUBTRACTION
-
-
-						default: RES<=0;						
+						12: case(INP_VALID)	// CMD - 12: SIGNED SUBTRACTION
+							3: begin
+								RES<= OPA + ( ~OPB + 1);
+								OFLOW<=(OPA[WIDTH-1] ^ OPB[WIDTH-1]) & (RES[WIDTH-1] ^ OPA[WIDTH-1]);
+							end
+                                                        default: begin
+                                                                        RES<=0;
+                                                                        ERR<=1;
+                                                        end
+						endcase
+						default:
+							RES<=0;						
 					endcase
                 		end
 				else begin  // MODE - 0
@@ -285,6 +302,7 @@ module alu_design #(parameter WIDTH=4)(
 								endcase
 								if(|(OPB[WIDTH-1:4])!=0)
 									ERR<=1;
+							end
 							default: begin
 								RES<=0;
 								ERR<=1;
@@ -292,6 +310,7 @@ module alu_design #(parameter WIDTH=4)(
 						endcase
 						default: RES<=0;
 					endcase
+				end
 			end
 			else begin
 				RES<=RES;
