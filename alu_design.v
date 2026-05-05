@@ -8,12 +8,19 @@ module alu_design #(parameter WIDTH=4)(
 	output reg [2*WIDTH-1:0] RES;
 	output reg ERR,G,L,E,COUT,OFLOW;
 	reg [1:0] count;
-	reg [WIDTH-1:0] temp,tempA, tempB;	
+	reg [WIDTH-1:0] temp_mul,tempA, tempB;
+	wire [WIDTH-1:0] sum_w,diff_w;
+
+
+	assign sum_w=OPA+OPB;
+	assign diff_w=OPA-OPB;	
 	always @(posedge CLK) begin
-		if (MODE==1 && ( CMD==9 || CMD ==10))
-				count<=count+1;
-		else	
-			count<=0;
+		if (MODE == 1 && (CMD == 9 || CMD == 10)) begin
+			if (count < 2) 
+				count <= count + 1;
+			else
+				count <= 0;
+		end
 	end
 	always @(posedge CLK or posedge RST) begin    //Asynchronous Active High RESET
 		if(RST) begin
@@ -40,7 +47,7 @@ module alu_design #(parameter WIDTH=4)(
 						0: case( INP_VALID) // CMD - 0 : ADD
 							3:begin     // Perform OPA+OPB only if INP_VALID = 3
 								RES<= OPA+OPB;
-								COUT<=RES[WIDTH]?1:0;
+								COUT<=(OPA + OPB) > ((1<<WIDTH)-1);
 							end
 							default: begin     // Else ERR=1 , RES = 0
 								RES<=0;
@@ -60,7 +67,7 @@ module alu_design #(parameter WIDTH=4)(
 						2: case( INP_VALID)  // CMD - 2 : ADD_CIN
 							3: begin
 								RES<=OPA+OPB+CIN;
-								COUT<=RES[WIDTH]? 1:0;
+								COUT <= (OPA + OPB + CIN) > ((1<<WIDTH)-1);
 							end
 							default: begin
 								RES<=0;
@@ -123,19 +130,17 @@ module alu_design #(parameter WIDTH=4)(
 						9: case (INP_VALID) //CMD - 9: MULTIPLICATION w INC_A and INC_B
 			 				3: begin
 								case(count)
+									0: begin
+										tempA<=OPA+1;
+										tempB<=OPB+1;
+									end
 									1: begin
-										tempA<=OPA;
-										tempB<=OPB;
+										temp_mul<=tempA*tempB;
 									end
 									2: begin
-										tempA<=tempA+1;
-										tempB<=tempB+1;
+										RES<=temp_mul;
 									end
-									3: begin
-										RES<=tempA*tempB;
-										count<=0;
-									end
-									default: count<=0;
+									default: RES<=0;
 								endcase
 							end
 							default: begin
@@ -146,18 +151,17 @@ module alu_design #(parameter WIDTH=4)(
 						10: case (INP_VALID) //CMD - 10: MULTIPLICATION w SHIL_A
                                                         3: begin
                                                                 case(count)
-                                                                        1: begin
+                                                                        0: begin
                                                                                 tempA<=OPA;
                                                                                 tempB<=OPB;
                                                                         end
-                                                                        2: begin
-                                                                                temp<=tempA<<1;
+                                                                        1: begin
+                                                                                temp_mul<=(tempA<<1)*tempB;
                                                                         end
-                                                                        3: begin
-                                                                                RES<=temp * tempB;
-                                                                                count<=0;
+                                                                        2: begin
+                                                                                RES<=temp_mul;
 									end
-                                                                        default: count<=0;
+                                                                        default: RES<=0;
                                                                 endcase
 							end
                                                         default: begin
@@ -168,7 +172,10 @@ module alu_design #(parameter WIDTH=4)(
 						11: case(INP_VALID) // CMD - 11: SIGNED ADDITION
 							3: begin
 								RES<=$signed(OPA) + $signed(OPB);
-								OFLOW<=(OPA[WIDTH-1] == OPB[WIDTH-1]) && (RES[WIDTH-1] != OPA[WIDTH-1]);
+								OFLOW<=(OPA[WIDTH-1] == OPB[WIDTH-1]) && (OPA[WIDTH-1] != sum_w[WIDTH-1]);
+								G<=($signed(OPA)>$signed(OPB));
+								L<=($signed(OPA)<$signed(OPB));
+								E<=(OPA==OPB);		
 							end
                                                         default: begin
                                                                         RES<=0;
@@ -178,7 +185,10 @@ module alu_design #(parameter WIDTH=4)(
 						12: case(INP_VALID)	// CMD - 12: SIGNED SUBTRACTION
 							3: begin
 								RES<= OPA + ( ~OPB + 1);
-								OFLOW<=(OPA[WIDTH-1] ^ OPB[WIDTH-1]) & (RES[WIDTH-1] ^ OPA[WIDTH-1]);
+								OFLOW<=(OPA[WIDTH-1] ^ OPB[WIDTH-1]) & (diff_w[WIDTH-1] ^ OPA[WIDTH-1]);
+								G<=($signed(OPA)>$signed(OPB));
+								L<=($signed(OPA)<$signed(OPB));
+								E<=(OPA==OPB);		
 							end
                                                         default: begin
                                                                         RES<=0;
@@ -290,18 +300,14 @@ module alu_design #(parameter WIDTH=4)(
 						endcase
 						12: case(INP_VALID) // CMD - 12 : ROR_A_B
 							3: begin
-								case (OPB[2:0])
-									0: RES <= OPA;
-									1: RES [WIDTH-1:0] <= {OPA[0],OPA[WIDTH-1:1]};
-									2: RES [WIDTH-1:0] <= {OPA[1:0],OPA[WIDTH-1:2]};
-									3: RES [WIDTH-1:0] <= {OPA[2:0], OPA[WIDTH-1:3]};
-									4: RES [WIDTH-1:0] <= {OPA[3:0], OPA[WIDTH-1:4]};
-									5: RES [WIDTH-1:0] <= {OPA[4:0], OPA[WIDTH-1:5]};
-									6: RES [WIDTH-1:0] <= {OPA[5:0], OPA[WIDTH-1:6]};
-									7: RES [WIDTH-1:0] <= {OPA[6:0], OPA[WIDTH-1:7]};
-								endcase
-								if(|(OPB[WIDTH-1:4])!=0)
-									ERR<=1;
+								if (|(OPB[(2*WIDTH)-1 : WIDTH])) begin
+            								ERR <= 1'b1;
+								end
+								else begin
+									ERR <= 1'b0;
+									RES[WIDTH-1:0] <= (OPA << (OPB % WIDTH)) | (OPA >> (WIDTH - (OPB % WIDTH)));
+								        RES[(2*WIDTH)-1 : WIDTH] <= 0;
+								end
 							end
 							default: begin
 								RES<=0;
