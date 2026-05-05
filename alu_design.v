@@ -1,4 +1,4 @@
-module alu_design #(parameter WIDTH=4)(
+module alu_design #(parameter WIDTH=8)(
 	CLK,RST,MODE,CIN,CE,OPA,OPB,INP_VALID,CMD,RES,ERR,G,L,E,COUT,OFLOW 
 );
 	input CLK,RST,MODE,CIN,CE;                    
