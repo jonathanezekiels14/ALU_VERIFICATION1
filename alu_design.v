@@ -298,7 +298,7 @@ module alu_design #(parameter WIDTH=8)(
                                                                         ERR<=1;
                                                         end
 						endcase
-						12: case(INP_VALID) // CMD - 12 : ROR_A_B
+						12: case(INP_VALID) // CMD - 12 : ROL_A_B
 							3: begin
 								if (|(OPB[(2*WIDTH)-1 : WIDTH])) begin
             								ERR <= 1'b1;
@@ -314,7 +314,26 @@ module alu_design #(parameter WIDTH=8)(
 								ERR<=1;
                                                         end
 						endcase
-						default: RES<=0;
+						13: case(INP_VALID) // CMD - 13 : ROR_A_B
+							3: begin
+								if (|(OPB[(2*WIDTH)-1 : WIDTH])) begin
+            								ERR <= 1'b1;
+								end
+								else begin
+									ERR <= 1'b0;
+									RES[WIDTH-1:0] <= (OPA >> (OPB % WIDTH)) | (OPA << (WIDTH - (OPB % WIDTH)));
+								        RES[(2*WIDTH)-1 : WIDTH] <= 0;
+								end
+							end
+							default: begin
+								RES<=0;
+								ERR<=1;
+                                                        end
+						endcase
+						default: begin
+							RES<=0;
+							ERR<=1;
+						end
 					endcase
 				end
 			end
