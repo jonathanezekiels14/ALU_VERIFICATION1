@@ -1,12 +1,13 @@
 `timescale 1ns/1ps
-`define WIDTH 8
-`define CMD_WIDTH 4
-`include "ALU_reference.v"
+`include "ALU_referencemodel.v"
+`include "ALU_toverify.v"
 module alu_testbench();
-	
+	// Parameters
+	parameter WIDTH = 8;
+	parameter CMD_WIDTH = 4;
 	// DUT Signals
 	reg [WIDTH-1:0] OPA,OPB;
-	reg CLK,RST,CE,CIN;
+	reg CLK,RST,CE,CIN,MODE;
 	reg [1:0] INP_VALID;
 	reg [CMD_WIDTH-1:0] CMD;
 	wire [2*WIDTH-1:0] RES;
@@ -23,7 +24,7 @@ module alu_testbench();
 	integer test_count = 0;
 
 	//DUT Instantiation
-	alu inst1 #(.WIDTH(WIDTH))(
+	alu #(.DATA_WIDTH(WIDTH))inst1 (
 		.clk(CLK),.rst(RST),.ce(CE),
 		.c_in(CIN),.mode(MODE),.inp_valid(INP_VALID),
 		.op_a(OPA),.op_b(OPB),.result(RES),
@@ -32,7 +33,7 @@ module alu_testbench();
 	);
 
 	// Reference Model Instantiation 
-	reference_model inst2 #(.OP_WIDTH(WIDTH),.CMD_WIDTH(CMD_WIDTH))(
+	reference_model #(.OP_WIDTH(WIDTH),.CMD_WIDTH(CMD_WIDTH)) inst2 ( 
 		.OPA(OPA),.OPB(OPB),.INP_VALID(INP_VALID),
 		.CIN(CIN),.MODE(MODE),.CMD(CMD),
 		.RES(RES_ref),.COUT(COUT_ref),.OFLOW(OFLOW_ref),
@@ -46,7 +47,7 @@ module alu_testbench();
 	end
 	
 	// Driver to provide inputs to the 
-	task driver();
+	task driver;
 		input [WIDTH-1:0] d_opa,d_opb;
 		input [CMD_WIDTH-1:0] d_cmd;
 		input [1:0] d_inp_valid;
@@ -70,27 +71,80 @@ module alu_testbench();
 	endtask
 
 	// Scoreboard to track 
-	task scoreboard();
+	task scoreboard;
 		input [CMD_WIDTH-1:0] scb_cmd;
 		begin
 			test_count = test_count + 1;
 			if(RES != RES_ref || ERR != ERR_ref || COUT != COUT_ref || OFLOW != OFLOW_ref || G != G_ref || L != L_ref || E != E_ref) begin
 				fail_count = fail_count + 1;
 				$display("-----------------------------------------------------------------------");
-				$display(" [FAIL] Incorrect Output at MODE: %b , CMD: %d ",MODE,CMD);
+				$display(" [FAIL] Incorrect Output at MODE: %b , CMD: %d ",MODE,scb_cmd);
 				$display(" Inputs:	OPA: %d , OPB: %d , INP_VALID : %b ", OPA,OPB,INP_VALID);
 				$display(" Expected Result : RES: %d , COUT: %b , OFLOW: %b , EGL: %b , ERR: %b ",RES_ref,COUT_ref,OFLOW_ref,{E_ref,G_ref,L_ref},ERR_ref);
 				$display(" DUT Result	: RES: %d , COUT: %b , OFLOW: %b , EGL: %b , ERR: %b ",RES,COUT,OFLOW,{E,G,L},ERR);
 				$display("-----------------------------------------------------------------------");
 			end
 			else begin
-				$display(" [PASS] Inputs: OPA: %d , OPB: %d , INP_VALID : %b ", OPA,OPB,INP_VALID)
+				$display(" [PASS] Inputs: OPA: %d , OPB: %d , INP_VALID : %b ", OPA,OPB,INP_VALID);
 				$display(" Expected Result : RES: %d , COUT: %b , OFLOW: %b , EGL: %b , ERR: %b ",RES_ref,COUT_ref,OFLOW_ref,{E_ref,G_ref,L_ref},ERR_ref);
 				$display(" DUT Result	: RES: %d , COUT: %b , OFLOW: %b , EGL: %b , ERR: %b ",RES,COUT,OFLOW,{E,G,L},ERR);
 				pass_count = pass_count + 1;
 			end
 		end
 	endtask	
-	
-	
+
+	// Generator
+	task generator;
+		input target_mode;
+		input [CMD_WIDTH-1:0] target_cmd;
+		input [31:0] num_iterations;
+
+		integer i;
+		reg [WIDTH-1:0] rand_opa, rand_opb;
+
+		begin
+			for (i = 0; i < num_iterations ; i = i + 1) begin
+				rand_opa = $random;
+				rand_opb = $random;
+				if ( target_mode == 0 && (target_cmd == 12 || target_cmd == 13 )) begin
+					rand_opb = $random % 8;
+				end
+
+				driver(target_mode, target_cmd, rand_opa, rand_opb, $random , 2'b11);
+				scoreboard(target_cmd);
+			end
+		end
+	endtask
+
+	initial begin
+		CLK = 0; RST = 1; CE = 0; MODE = 0; CMD = 0; 
+        	OPA = 0; OPB = 0; CIN = 0; INP_VALID = 0;
+
+        	#20 RST = 0;
+        	@(posedge CLK);
+
+        	$display("\n=== STARTING PHASE 1: DIRECTED CORNER CASES ===");
+        	driver(1'b1, 4'd11, 8'h7F, 8'h01, 0, 2'b11); scoreboard(4'd11); // Signed Overflow
+        	driver(1'b1, 4'd11, 8'h80, 8'hFF, 0, 2'b11); scoreboard(4'd11); // Signed Overflow (Negative)
+        	driver(1'b0, 4'd0,  8'hAA, 8'h55, 0, 2'b11); scoreboard(4'd0);  // Bitwise Masking
+        	driver(1'b1, 4'd0,  8'd10, 8'd20, 0, 2'b01); scoreboard(4'd0);  // Missing input error
+
+        	$display("\n=== STARTING PHASE 2: RANDOMIZED STRESS TESTS ===");
+        	generator(1'b0, 4'd0, 50);   // Logical AND
+        	generator(1'b1, 4'd0, 100);  // Unsigned ADD
+        	generator(1'b1, 4'd9, 50);   // Inc & Multiply (takes 3 cycles!)
+        	generator(1'b1, 4'd11, 100); // Signed ADD
+        
+        	$display("\n===================================================");
+        	$display("                 TEST SUMMARY                      ");
+        	$display("===================================================");
+        	$display("Total Tests Run : %0d", test_count);
+        	$display("Passed          : %0d", pass_count);
+        	$display("Failed          : %0d", fail_count);
+        	if (fail_count == 0) $display(">>> STATUS: ALL CLEAR <<<");
+        	else                   $display(">>> STATUS: BUGS FOUND <<<");
+        	$display("===================================================\n");
+        
+        	#100; $finish;
+    	end	
 endmodule	

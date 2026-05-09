@@ -8,45 +8,75 @@ z2
 !i10f 100
 cModel Technology
 Z0 d/fetools/work_area/frontend/Batch_11/jonathanezekiels/ALU_VERIFICATION1/Verification
+T_opt
+!s110 1778337642
+Vz=Z<`kLnRfUJP=DoI[:Pb1
+04 13 4 work alu_testbench fast 0
+=1-6805caf5892e-69ff4769-f1000-38007
+o-quiet -auto_acc_if_foreign -work work
+Z1 tCvgOpt 0
+n@_opt
+OE;O;10.6c;65
 valu
-!s110 1778230525
+Z2 !s110 1778337634
 !i10b 1
 !s100 ;RTb=DckSfW=EIoZg:1Ai3
 IHcE2=34^E`J4hzdgFczY91
-Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z3 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1778230521
+w1778337557
 8ALU_toverify.v
 FALU_toverify.v
 L0 5
-Z2 OE;L;10.6c;65
+Z4 OE;L;10.6c;65
 r1
 !s85 0
 31
-!s108 1778230525.000000
-!s107 ALU_toverify.v|
-!s90 ALU_toverify.v|
+Z5 !s108 1778337634.000000
+Z6 !s107 ALU_toverify.v|ALU_referencemodel.v|ALU_tb.v|
+Z7 !s90 ALU_tb.v|
 !i113 0
-Z3 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-Z4 tCvgOpt 0
-vreference_model
-!s110 1778225156
-!i10b 1
-!s100 3A0I?[SN1CTP3G>?6R[Z21
-I8Jc5QLV0o@J03Hie>APL63
+Z8 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R1
+valu_testbench
+R2
+!i10b 1
+!s100 34lM3?z3FGzh>mJ^[GRPM2
+Io@B^n_JBYAbdJ``36Ez<X1
+R3
+R0
+w1778337633
+8ALU_tb.v
+FALU_tb.v
+L0 4
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+R1
+vreference_model
+R2
+!i10b 1
+!s100 KY?Rl_YEQQm?>0FZL[Rnc1
+ID696FPNG>81ja]Y_DchVK1
+R3
 R0
 w1778225155
 8ALU_referencemodel.v
 FALU_referencemodel.v
 L0 1
-R2
+R4
 r1
 !s85 0
 31
-!s108 1778225156.000000
-!s107 ALU_referencemodel.v|
-!s90 ALU_referencemodel.v|
+R5
+R6
+R7
 !i113 0
-R3
-R4
+R8
+R1
