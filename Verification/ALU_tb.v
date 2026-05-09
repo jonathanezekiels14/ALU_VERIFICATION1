@@ -119,32 +119,34 @@ module alu_testbench();
 
 	initial begin
 		CLK = 0; RST = 1; CE = 0; MODE = 0; CMD = 0; 
-        	OPA = 0; OPB = 0; CIN = 0; INP_VALID = 0;
+		OPA = 0; OPB = 0; CIN = 0; INP_VALID = 0;
 
-        	#20 RST = 0; CE = 1;
-        	@(posedge CLK);
+		#20 RST = 0; CE = 1;
+		@(posedge CLK);
 
-        	$display("\n=== STARTING PHASE 1: DIRECTED CORNER CASES ===");
-        	driver(1'b1, 4'd11, 8'h7F, 8'h01, 0, 2'b11); scoreboard(4'd11); // Signed Overflow
-        	driver(1'b1, 4'd11, 8'h80, 8'hFF, 0, 2'b11); scoreboard(4'd11); // Signed Overflow (Negative)
-        	driver(1'b0, 4'd0,  8'hAA, 8'h55, 0, 2'b11); scoreboard(4'd0);  // Bitwise Masking
-        	driver(1'b1, 4'd0,  8'd10, 8'd20, 0, 2'b01); scoreboard(4'd0);  // Missing input error
+		$display("\n------------- Directed Test Cases --------------");
+		driver(1'b1, 4'd11, 8'h7F, 8'h01, 0, 2'b11); scoreboard(4'd11); // Signed Overflow
+		driver(1'b1, 4'd11, 8'h80, 8'hFF, 0, 2'b11); scoreboard(4'd11); // Signed Overflow (Negative)
+		driver(1'b0, 4'd0,  8'hAA, 8'h55, 0, 2'b11); scoreboard(4'd0);  // Bitwise Masking
+		driver(1'b1, 4'd0,  8'd10, 8'd20, 0, 2'b01); scoreboard(4'd0);  // Missing input error
 
-        	$display("\n=== STARTING PHASE 2: RANDOMIZED STRESS TESTS ===");
-        	generator(1'b0, 4'd0, 50);   // Logical AND
-        	generator(1'b1, 4'd0, 100);  // Unsigned ADD
-        	generator(1'b1, 4'd9, 50);   // Inc & Multiply (takes 3 cycles!)
-        	generator(1'b1, 4'd11, 100); // Signed ADD
-        
-        	$display("\n===================================================");
-        	$display("                 TEST SUMMARY                      ");
-        	$display("===================================================");
-        	$display("Total Tests Run : %0d", test_count);
-        	$display("Passed          : %0d", pass_count);
-        	$display("Failed          : %0d", fail_count);
-        	if (fail_count == 0) $display(">>> STATUS: ALL CLEAR <<<");
-        	else                   $display(">>> STATUS: BUGS FOUND <<<");
-        	$display("===================================================\n");
+		$display("\n------------- Randomized Testcases -------------");
+		generator(1'b0, 4'd0, 50);   // Logical AND
+		generator(1'b1, 4'd0, 100);  // Unsigned ADD
+		generator(1'b1, 4'd9, 50);   // Inc & Multiply (takes 3 cycles!)
+		generator(1'b1, 4'd11, 100); // Signed ADD
+
+		$display("\n-------------------------------------------------");
+		$display("                 Test Summary                      ");
+		$display("---------------------------------------------------");
+		$display("Total Tests Run : %0d", test_count);
+		$display("Passed          : %0d", pass_count);
+		$display("Failed          : %0d", fail_count);
+		if (fail_count == 0)
+			$display(" ***  All Testcases PASSED ***");
+		else
+			$display(" ***	    Bugs Found	     ***");
+        	$display("---------------------------------------------------\n");
         
         	#100; $finish;
     	end	

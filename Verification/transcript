@@ -1,9 +1,6 @@
 # vsim -c alu_testbench 
-# Start time: 20:34:01 on May 09,2026
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# ** Warning: ALU_tb.v(36): (vopt-2241) Connection width does not match width of port 'RES'. The port definition is at: ALU_referencemodel.v(6).
-# ** Warning: ALU_referencemodel.v(251): (vopt-2697) MSB of part-select into 'OPB' is out of bounds.
-# ** Warning: ALU_referencemodel.v(267): (vopt-2697) MSB of part-select into 'OPB' is out of bounds.
+# Start time: 20:41:17 on May 09,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
 # //
@@ -1400,5 +1397,5 @@
 # 
 # ** Note: $finish    : ALU_tb.v(149)
 #    Time: 7205 ns  Iteration: 0  Instance: /alu_testbench
-# End time: 20:34:04 on May 09,2026, Elapsed time: 0:00:03
-# Errors: 0, Warnings: 3
+# End time: 20:41:20 on May 09,2026, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 0

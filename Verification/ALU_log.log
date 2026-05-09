@@ -1,0 +1,1409 @@
+# vsim work.alu_testbench -l ALU_log.log -coverage -c -do "coverage save -onexit -codeAll ALU.ucdb; run -all; exit" 
+# Start time: 20:42:40 on May 09,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ALU_tb.v(36): (vopt-2241) Connection width does not match width of port 'RES'. The port definition is at: ALU_referencemodel.v(6).
+# ** Warning: ALU_referencemodel.v(251): (vopt-2697) MSB of part-select into 'OPB' is out of bounds.
+# ** Warning: ALU_referencemodel.v(267): (vopt-2697) MSB of part-select into 'OPB' is out of bounds.
+# ** Note: (vopt-143) Recognized 2 FSMs in module "alu(fast)".
+# //  Questa Sim
+# //  Version 10.6c linux Jul 25 2017
+# //
+# //  Copyright 1991-2017 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading work.alu_testbench(fast)
+# Loading work.alu(fast)
+# coverage save -onexit -codeAll ALU.ucdb
+#  run -all
+# 
+# === STARTING PHASE 1: DIRECTED CORNER CASES ===
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 127 , OPB:   1 , INP_VALID : 11 
+#  Expected Result : RES: 128 , COUT: 0 , OFLOW: 1 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   128 , COUT: 0 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 128 , OPB: 255 , INP_VALID : 11 
+#  Expected Result : RES: 127 , COUT: 0 , OFLOW: 1 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   127 , COUT: 1 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+#  [PASS] Inputs: OPA: 170 , OPB:  85 , INP_VALID : 11 
+#  Expected Result : RES:   0 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:     0 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  10 , OPB:  20 , INP_VALID : 01 
+#  Expected Result : RES:   0 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 1 
+#  DUT Result	: RES:     0 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 1 
+# 
+# === STARTING PHASE 2: RANDOMIZED STRESS TESTS ===
+#  [PASS] Inputs: OPA:  36 , OPB: 129 , INP_VALID : 11 
+#  Expected Result : RES:   0 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:     0 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  99 , OPB:  13 , INP_VALID : 11 
+#  Expected Result : RES:   1 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:     1 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 101 , OPB:  18 , INP_VALID : 11 
+#  Expected Result : RES:   0 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:     0 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  13 , OPB: 118 , INP_VALID : 11 
+#  Expected Result : RES:   4 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:     4 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 237 , OPB: 140 , INP_VALID : 11 
+#  Expected Result : RES: 140 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   140 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 198 , OPB: 197 , INP_VALID : 11 
+#  Expected Result : RES: 196 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   196 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 229 , OPB: 119 , INP_VALID : 11 
+#  Expected Result : RES: 101 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   101 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 143 , OPB: 242 , INP_VALID : 11 
+#  Expected Result : RES: 130 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   130 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 232 , OPB: 197 , INP_VALID : 11 
+#  Expected Result : RES: 192 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   192 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 189 , OPB:  45 , INP_VALID : 11 
+#  Expected Result : RES:  45 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    45 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  99 , OPB:  10 , INP_VALID : 11 
+#  Expected Result : RES:   2 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:     2 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  32 , OPB: 170 , INP_VALID : 11 
+#  Expected Result : RES:  32 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    32 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 150 , OPB:  19 , INP_VALID : 11 
+#  Expected Result : RES:  18 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    18 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  83 , OPB: 107 , INP_VALID : 11 
+#  Expected Result : RES:  67 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    67 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:   2 , OPB: 174 , INP_VALID : 11 
+#  Expected Result : RES:   2 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:     2 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 207 , OPB:  35 , INP_VALID : 11 
+#  Expected Result : RES:   3 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:     3 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 202 , OPB:  60 , INP_VALID : 11 
+#  Expected Result : RES:   8 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:     8 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 138 , OPB:  65 , INP_VALID : 11 
+#  Expected Result : RES:   0 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:     0 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 120 , OPB: 137 , INP_VALID : 11 
+#  Expected Result : RES:   8 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:     8 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 182 , OPB: 198 , INP_VALID : 11 
+#  Expected Result : RES: 134 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   134 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 188 , OPB:  42 , INP_VALID : 11 
+#  Expected Result : RES:  40 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    40 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 113 , OPB: 133 , INP_VALID : 11 
+#  Expected Result : RES:   1 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:     1 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  59 , OPB:  58 , INP_VALID : 11 
+#  Expected Result : RES:  58 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    58 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  21 , OPB: 241 , INP_VALID : 11 
+#  Expected Result : RES:  17 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    17 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  98 , OPB:  76 , INP_VALID : 11 
+#  Expected Result : RES:  64 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    64 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 143 , OPB: 248 , INP_VALID : 11 
+#  Expected Result : RES: 136 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   136 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 159 , OPB:  92 , INP_VALID : 11 
+#  Expected Result : RES:  28 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    28 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 137 , OPB:  73 , INP_VALID : 11 
+#  Expected Result : RES:   9 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:     9 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 215 , OPB:  81 , INP_VALID : 11 
+#  Expected Result : RES:  81 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    81 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  12 , OPB: 194 , INP_VALID : 11 
+#  Expected Result : RES:   0 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:     0 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 119 , OPB:  61 , INP_VALID : 11 
+#  Expected Result : RES:  53 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    53 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 126 , OPB: 109 , INP_VALID : 11 
+#  Expected Result : RES: 108 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   108 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  31 , OPB: 211 , INP_VALID : 11 
+#  Expected Result : RES:  19 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    19 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 120 , OPB:  91 , INP_VALID : 11 
+#  Expected Result : RES:  88 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    88 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  63 , OPB:  42 , INP_VALID : 11 
+#  Expected Result : RES:  42 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    42 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 134 , OPB: 142 , INP_VALID : 11 
+#  Expected Result : RES: 134 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   134 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 250 , OPB:  38 , INP_VALID : 11 
+#  Expected Result : RES:  34 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    34 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 163 , OPB:  47 , INP_VALID : 11 
+#  Expected Result : RES:  35 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    35 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  95 , OPB:  68 , INP_VALID : 11 
+#  Expected Result : RES:  68 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    68 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 203 , OPB: 230 , INP_VALID : 11 
+#  Expected Result : RES: 194 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   194 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  41 , OPB: 237 , INP_VALID : 11 
+#  Expected Result : RES:  41 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    41 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 101 , OPB: 181 , INP_VALID : 11 
+#  Expected Result : RES:  37 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    37 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 121 , OPB:  68 , INP_VALID : 11 
+#  Expected Result : RES:  64 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    64 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  42 , OPB: 171 , INP_VALID : 11 
+#  Expected Result : RES:  42 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    42 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 220 , OPB: 154 , INP_VALID : 11 
+#  Expected Result : RES: 152 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   152 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 195 , OPB:  86 , INP_VALID : 11 
+#  Expected Result : RES:  66 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    66 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 103 , OPB:  10 , INP_VALID : 11 
+#  Expected Result : RES:   2 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:     2 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  56 , OPB: 121 , INP_VALID : 11 
+#  Expected Result : RES:  56 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    56 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 148 , OPB: 147 , INP_VALID : 11 
+#  Expected Result : RES: 144 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   144 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  89 , OPB: 219 , INP_VALID : 11 
+#  Expected Result : RES:  89 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    89 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 217 , OPB: 109 , INP_VALID : 11 
+#  Expected Result : RES:  70 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    70 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 202 , OPB: 182 , INP_VALID : 11 
+#  Expected Result : RES: 128 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   128 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  70 , OPB:   4 , INP_VALID : 11 
+#  Expected Result : RES:  74 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    74 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 105 , OPB: 180 , INP_VALID : 11 
+#  Expected Result : RES:  29 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    29 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  40 , OPB:  45 , INP_VALID : 11 
+#  Expected Result : RES:  85 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    85 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  46 , OPB:   8 , INP_VALID : 11 
+#  Expected Result : RES:  54 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    54 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 253 , OPB:  41 , INP_VALID : 11 
+#  Expected Result : RES:  38 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    38 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 134 , OPB: 218 , INP_VALID : 11 
+#  Expected Result : RES:  96 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    96 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 102 , OPB: 112 , INP_VALID : 11 
+#  Expected Result : RES: 214 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   214 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 186 , OPB:  94 , INP_VALID : 11 
+#  Expected Result : RES:  24 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    24 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 213 , OPB:  26 , INP_VALID : 11 
+#  Expected Result : RES: 239 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   239 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  55 , OPB: 150 , INP_VALID : 11 
+#  Expected Result : RES: 205 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   205 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  38 , OPB: 182 , INP_VALID : 11 
+#  Expected Result : RES: 220 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   220 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 220 , OPB: 134 , INP_VALID : 11 
+#  Expected Result : RES:  98 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    98 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 126 , OPB: 219 , INP_VALID : 11 
+#  Expected Result : RES:  89 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    89 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 121 , OPB: 250 , INP_VALID : 11 
+#  Expected Result : RES: 115 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   115 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  23 , OPB: 161 , INP_VALID : 11 
+#  Expected Result : RES: 184 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   184 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  80 , OPB: 245 , INP_VALID : 11 
+#  Expected Result : RES:  69 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    69 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  41 , OPB: 193 , INP_VALID : 11 
+#  Expected Result : RES: 234 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   234 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 152 , OPB:  75 , INP_VALID : 11 
+#  Expected Result : RES: 227 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   227 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 236 , OPB: 138 , INP_VALID : 11 
+#  Expected Result : RES: 118 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   118 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 168 , OPB: 169 , INP_VALID : 11 
+#  Expected Result : RES:  81 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    81 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  14 , OPB: 230 , INP_VALID : 11 
+#  Expected Result : RES: 244 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   244 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  42 , OPB:  42 , INP_VALID : 11 
+#  Expected Result : RES:  84 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    84 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 158 , OPB:  56 , INP_VALID : 11 
+#  Expected Result : RES: 214 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   214 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 200 , OPB: 202 , INP_VALID : 11 
+#  Expected Result : RES: 146 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   146 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 107 , OPB: 199 , INP_VALID : 11 
+#  Expected Result : RES:  50 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    50 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 186 , OPB: 196 , INP_VALID : 11 
+#  Expected Result : RES: 126 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   126 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 146 , OPB: 180 , INP_VALID : 11 
+#  Expected Result : RES:  70 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    70 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 134 , OPB: 250 , INP_VALID : 11 
+#  Expected Result : RES: 128 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   128 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  50 , OPB: 189 , INP_VALID : 11 
+#  Expected Result : RES: 239 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   239 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 228 , OPB: 202 , INP_VALID : 11 
+#  Expected Result : RES: 174 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   174 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 161 , OPB: 142 , INP_VALID : 11 
+#  Expected Result : RES:  47 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    47 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  11 , OPB: 239 , INP_VALID : 11 
+#  Expected Result : RES: 250 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   250 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  54 , OPB: 117 , INP_VALID : 11 
+#  Expected Result : RES: 171 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   171 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 107 , OPB: 136 , INP_VALID : 11 
+#  Expected Result : RES: 243 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   243 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 155 , OPB: 146 , INP_VALID : 11 
+#  Expected Result : RES:  45 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    45 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  45 , OPB:  75 , INP_VALID : 11 
+#  Expected Result : RES: 120 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   120 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  30 , OPB:  13 , INP_VALID : 11 
+#  Expected Result : RES:  43 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    43 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  24 , OPB: 209 , INP_VALID : 11 
+#  Expected Result : RES: 233 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   233 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  65 , OPB:  59 , INP_VALID : 11 
+#  Expected Result : RES: 124 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   124 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  83 , OPB:  86 , INP_VALID : 11 
+#  Expected Result : RES: 169 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   169 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 226 , OPB:   4 , INP_VALID : 11 
+#  Expected Result : RES: 230 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   230 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 216 , OPB:  18 , INP_VALID : 11 
+#  Expected Result : RES: 234 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   234 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  57 , OPB: 229 , INP_VALID : 11 
+#  Expected Result : RES:  30 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    30 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  43 , OPB: 129 , INP_VALID : 11 
+#  Expected Result : RES: 172 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   172 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  39 , OPB: 161 , INP_VALID : 11 
+#  Expected Result : RES: 200 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   200 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:   4 , OPB:  88 , INP_VALID : 11 
+#  Expected Result : RES:  92 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    92 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  20 , OPB:  18 , INP_VALID : 11 
+#  Expected Result : RES:  38 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    38 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 177 , OPB:  85 , INP_VALID : 11 
+#  Expected Result : RES:   6 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:     6 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  43 , OPB: 245 , INP_VALID : 11 
+#  Expected Result : RES:  32 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    32 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  39 , OPB: 132 , INP_VALID : 11 
+#  Expected Result : RES: 171 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   171 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 231 , OPB: 185 , INP_VALID : 11 
+#  Expected Result : RES: 160 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   160 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 219 , OPB: 201 , INP_VALID : 11 
+#  Expected Result : RES: 164 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   164 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 161 , OPB:  42 , INP_VALID : 11 
+#  Expected Result : RES: 203 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   203 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  69 , OPB: 131 , INP_VALID : 11 
+#  Expected Result : RES: 200 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   200 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 114 , OPB: 254 , INP_VALID : 11 
+#  Expected Result : RES: 112 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   112 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 111 , OPB: 134 , INP_VALID : 11 
+#  Expected Result : RES: 245 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   245 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  56 , OPB:  64 , INP_VALID : 11 
+#  Expected Result : RES: 120 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   120 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 246 , OPB: 197 , INP_VALID : 11 
+#  Expected Result : RES: 187 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   187 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 116 , OPB:  57 , INP_VALID : 11 
+#  Expected Result : RES: 173 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   173 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  60 , OPB:  42 , INP_VALID : 11 
+#  Expected Result : RES: 102 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   102 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  21 , OPB: 225 , INP_VALID : 11 
+#  Expected Result : RES: 246 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   246 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  67 , OPB: 201 , INP_VALID : 11 
+#  Expected Result : RES:  12 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    12 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  37 , OPB: 193 , INP_VALID : 11 
+#  Expected Result : RES: 230 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   230 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  90 , OPB:   7 , INP_VALID : 11 
+#  Expected Result : RES:  97 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    97 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  12 , OPB: 113 , INP_VALID : 11 
+#  Expected Result : RES: 125 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   125 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 182 , OPB: 247 , INP_VALID : 11 
+#  Expected Result : RES: 173 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   173 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  92 , OPB:  85 , INP_VALID : 11 
+#  Expected Result : RES: 177 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   177 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 160 , OPB: 114 , INP_VALID : 11 
+#  Expected Result : RES:  18 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    18 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 221 , OPB:  13 , INP_VALID : 11 
+#  Expected Result : RES: 234 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   234 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 121 , OPB: 158 , INP_VALID : 11 
+#  Expected Result : RES:  23 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    23 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 123 , OPB: 143 , INP_VALID : 11 
+#  Expected Result : RES:  10 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    10 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 227 , OPB:  29 , INP_VALID : 11 
+#  Expected Result : RES:   0 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:     0 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  68 , OPB: 149 , INP_VALID : 11 
+#  Expected Result : RES: 217 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   217 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 237 , OPB:  82 , INP_VALID : 11 
+#  Expected Result : RES:  63 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    63 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 141 , OPB:  82 , INP_VALID : 11 
+#  Expected Result : RES: 223 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   223 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  70 , OPB: 140 , INP_VALID : 11 
+#  Expected Result : RES: 210 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   210 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  23 , OPB: 106 , INP_VALID : 11 
+#  Expected Result : RES: 129 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   129 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 170 , OPB: 124 , INP_VALID : 11 
+#  Expected Result : RES:  38 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    38 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 186 , OPB: 139 , INP_VALID : 11 
+#  Expected Result : RES:  69 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    69 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  37 , OPB:  50 , INP_VALID : 11 
+#  Expected Result : RES:  87 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    87 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  73 , OPB:  20 , INP_VALID : 11 
+#  Expected Result : RES:  93 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    93 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  75 , OPB:  92 , INP_VALID : 11 
+#  Expected Result : RES: 167 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   167 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 134 , OPB:  57 , INP_VALID : 11 
+#  Expected Result : RES: 191 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   191 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 208 , OPB:  44 , INP_VALID : 11 
+#  Expected Result : RES: 252 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   252 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:   7 , OPB: 106 , INP_VALID : 11 
+#  Expected Result : RES: 113 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   113 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 232 , OPB:  75 , INP_VALID : 11 
+#  Expected Result : RES:  51 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    51 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 236 , OPB:  35 , INP_VALID : 11 
+#  Expected Result : RES:  15 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    15 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 201 , OPB:  57 , INP_VALID : 11 
+#  Expected Result : RES:   2 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:     2 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 212 , OPB: 103 , INP_VALID : 11 
+#  Expected Result : RES:  59 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    59 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 176 , OPB: 130 , INP_VALID : 11 
+#  Expected Result : RES:  50 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    50 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 217 , OPB:  32 , INP_VALID : 11 
+#  Expected Result : RES: 249 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   249 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 147 , OPB: 227 , INP_VALID : 11 
+#  Expected Result : RES: 118 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   118 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 200 , OPB:  93 , INP_VALID : 11 
+#  Expected Result : RES:  37 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    37 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 132 , OPB:  43 , INP_VALID : 11 
+#  Expected Result : RES: 175 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   175 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:  18 , OPB:  82 , INP_VALID : 11 
+#  Expected Result : RES: 100 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   100 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 208 , OPB: 110 , INP_VALID : 11 
+#  Expected Result : RES:  62 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    62 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA: 219 , OPB: 166 , INP_VALID : 11 
+#  Expected Result : RES: 129 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   129 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  [PASS] Inputs: OPA:   0 , OPB:  15 , INP_VALID : 11 
+#  Expected Result : RES:  15 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    15 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA:  12 , OPB:  89 , INP_VALID : 11 
+#  Expected Result : RES: 146 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:  1170 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 207 , OPB: 144 , INP_VALID : 11 
+#  Expected Result : RES: 208 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 30160 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 105 , OPB: 119 , INP_VALID : 11 
+#  Expected Result : RES: 176 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 30160 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 216 , OPB: 155 , INP_VALID : 11 
+#  Expected Result : RES:  60 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 33852 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 184 , OPB: 183 , INP_VALID : 11 
+#  Expected Result : RES: 248 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 34040 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA:  48 , OPB: 119 , INP_VALID : 11 
+#  Expected Result : RES: 248 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 34040 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 212 , OPB:   7 , INP_VALID : 11 
+#  Expected Result : RES: 168 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:  1704 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 233 , OPB: 139 , INP_VALID : 11 
+#  Expected Result : RES: 248 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 32760 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 219 , OPB: 128 , INP_VALID : 11 
+#  Expected Result : RES: 220 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 32760 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 197 , OPB:  48 , INP_VALID : 11 
+#  Expected Result : RES: 230 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:  9702 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 102 , OPB: 175 , INP_VALID : 11 
+#  Expected Result : RES: 208 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 18128 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 248 , OPB:   6 , INP_VALID : 11 
+#  Expected Result : RES: 207 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 18128 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 225 , OPB: 149 , INP_VALID : 11 
+#  Expected Result : RES: 108 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 33900 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA:  96 , OPB: 229 , INP_VALID : 11 
+#  Expected Result : RES:  38 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 22310 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 100 , OPB:  41 , INP_VALID : 11 
+#  Expected Result : RES: 146 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 22310 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 119 , OPB: 110 , INP_VALID : 11 
+#  Expected Result : RES:   8 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 13320 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 213 , OPB: 104 , INP_VALID : 11 
+#  Expected Result : RES: 198 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 22470 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 170 , OPB:  15 , INP_VALID : 11 
+#  Expected Result : RES: 176 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 22470 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 125 , OPB: 142 , INP_VALID : 11 
+#  Expected Result : RES:  98 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 18018 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA:  60 , OPB: 169 , INP_VALID : 11 
+#  Expected Result : RES: 130 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 10370 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA:  91 , OPB: 175 , INP_VALID : 11 
+#  Expected Result : RES:  64 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 10370 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 185 , OPB:  19 , INP_VALID : 11 
+#  Expected Result : RES: 136 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:  3720 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 101 , OPB:  81 , INP_VALID : 11 
+#  Expected Result : RES: 172 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:  8364 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 153 , OPB:  58 , INP_VALID : 11 
+#  Expected Result : RES: 126 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:  8364 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA:  98 , OPB: 228 , INP_VALID : 11 
+#  Expected Result : RES: 143 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 22671 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 125 , OPB:  89 , INP_VALID : 11 
+#  Expected Result : RES:  76 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 11340 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 237 , OPB: 201 , INP_VALID : 11 
+#  Expected Result : RES: 204 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 11340 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 175 , OPB: 219 , INP_VALID : 11 
+#  Expected Result : RES:  64 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 38720 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 112 , OPB:   6 , INP_VALID : 11 
+#  Expected Result : RES:  23 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   791 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 189 , OPB: 106 , INP_VALID : 11 
+#  Expected Result : RES: 106 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   791 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA:  80 , OPB: 123 , INP_VALID : 11 
+#  Expected Result : RES:  60 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 10044 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 120 , OPB: 246 , INP_VALID : 11 
+#  Expected Result : RES: 191 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 29887 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA:  35 , OPB: 121 , INP_VALID : 11 
+#  Expected Result : RES:  40 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 29887 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 187 , OPB:  14 , INP_VALID : 11 
+#  Expected Result : RES:   4 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:  2820 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA:  12 , OPB: 206 , INP_VALID : 11 
+#  Expected Result : RES: 131 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:  2691 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA:  89 , OPB: 185 , INP_VALID : 11 
+#  Expected Result : RES: 100 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:  2691 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 244 , OPB: 117 , INP_VALID : 11 
+#  Expected Result : RES: 238 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 28910 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+#  [PASS] Inputs: OPA:  57 , OPB:   2 , INP_VALID : 11 
+#  Expected Result : RES: 174 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   174 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA:   5 , OPB:  78 , INP_VALID : 11 
+#  Expected Result : RES: 218 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   174 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 184 , OPB:   8 , INP_VALID : 11 
+#  Expected Result : RES: 129 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:  1665 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 175 , OPB: 232 , INP_VALID : 11 
+#  Expected Result : RES:  48 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 41008 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 245 , OPB:  76 , INP_VALID : 11 
+#  Expected Result : RES: 254 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 41008 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA:  64 , OPB:  37 , INP_VALID : 11 
+#  Expected Result : RES: 166 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:  2470 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 112 , OPB:  45 , INP_VALID : 11 
+#  Expected Result : RES:  78 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:  5198 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 188 , OPB:  48 , INP_VALID : 11 
+#  Expected Result : RES:  45 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:  5198 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA:  80 , OPB: 161 , INP_VALID : 11 
+#  Expected Result : RES:  66 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 13122 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 245 , OPB: 245 , INP_VALID : 11 
+#  Expected Result : RES: 100 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 60516 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 148 , OPB: 106 , INP_VALID : 11 
+#  Expected Result : RES:  71 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 60516 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA: 184 , OPB: 158 , INP_VALID : 11 
+#  Expected Result : RES: 231 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES: 29415 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD:  9 
+#  Inputs:	OPA:  70 , OPB:   7 , INP_VALID : 11 
+#  Expected Result : RES:  56 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:   568 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  85 , OPB: 183 , INP_VALID : 11 
+#  Expected Result : RES:  12 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:    12 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  99 , OPB:  89 , INP_VALID : 11 
+#  Expected Result : RES: 188 , COUT: 0 , OFLOW: 1 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   188 , COUT: 0 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 104 , OPB:  30 , INP_VALID : 11 
+#  Expected Result : RES: 134 , COUT: 0 , OFLOW: 1 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   134 , COUT: 0 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  90 , OPB:  28 , INP_VALID : 11 
+#  Expected Result : RES: 118 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   118 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 171 , OPB: 208 , INP_VALID : 11 
+#  Expected Result : RES: 123 , COUT: 0 , OFLOW: 1 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   123 , COUT: 1 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 216 , OPB:  69 , INP_VALID : 11 
+#  Expected Result : RES:  29 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    29 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 139 , OPB: 252 , INP_VALID : 11 
+#  Expected Result : RES: 135 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   135 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 164 , OPB:  25 , INP_VALID : 11 
+#  Expected Result : RES: 189 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   189 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  62 , OPB: 243 , INP_VALID : 11 
+#  Expected Result : RES:  49 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:    49 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 196 , OPB:  92 , INP_VALID : 11 
+#  Expected Result : RES:  32 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    32 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 154 , OPB:  24 , INP_VALID : 11 
+#  Expected Result : RES: 178 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   178 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 170 , OPB:  26 , INP_VALID : 11 
+#  Expected Result : RES: 196 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   196 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 178 , OPB:  12 , INP_VALID : 11 
+#  Expected Result : RES: 190 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   190 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 195 , OPB: 235 , INP_VALID : 11 
+#  Expected Result : RES: 174 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   174 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 242 , OPB: 137 , INP_VALID : 11 
+#  Expected Result : RES: 123 , COUT: 0 , OFLOW: 1 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   123 , COUT: 1 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  27 , OPB: 173 , INP_VALID : 11 
+#  Expected Result : RES: 200 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   200 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  37 , OPB: 207 , INP_VALID : 11 
+#  Expected Result : RES: 244 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   244 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  27 , OPB: 128 , INP_VALID : 11 
+#  Expected Result : RES: 155 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   155 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 130 , OPB:   4 , INP_VALID : 11 
+#  Expected Result : RES: 134 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   134 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  54 , OPB:  50 , INP_VALID : 11 
+#  Expected Result : RES: 104 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   104 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 228 , OPB:  22 , INP_VALID : 11 
+#  Expected Result : RES: 250 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   250 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 192 , OPB:  46 , INP_VALID : 11 
+#  Expected Result : RES: 238 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   238 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 113 , OPB: 251 , INP_VALID : 11 
+#  Expected Result : RES: 108 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   108 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 220 , OPB:  23 , INP_VALID : 11 
+#  Expected Result : RES: 243 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   243 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 235 , OPB: 181 , INP_VALID : 11 
+#  Expected Result : RES: 160 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   160 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 143 , OPB: 191 , INP_VALID : 11 
+#  Expected Result : RES:  78 , COUT: 0 , OFLOW: 1 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    78 , COUT: 1 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 211 , OPB: 214 , INP_VALID : 11 
+#  Expected Result : RES: 169 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   169 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  26 , OPB: 113 , INP_VALID : 11 
+#  Expected Result : RES: 139 , COUT: 0 , OFLOW: 1 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   139 , COUT: 0 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  14 , OPB: 241 , INP_VALID : 11 
+#  Expected Result : RES: 255 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   255 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:   5 , OPB:  28 , INP_VALID : 11 
+#  Expected Result : RES:  33 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    33 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 236 , OPB:  42 , INP_VALID : 11 
+#  Expected Result : RES:  22 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    22 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  55 , OPB:   3 , INP_VALID : 11 
+#  Expected Result : RES:  58 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:    58 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 253 , OPB:  62 , INP_VALID : 11 
+#  Expected Result : RES:  59 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    59 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 116 , OPB: 176 , INP_VALID : 11 
+#  Expected Result : RES:  36 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:    36 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  18 , OPB: 104 , INP_VALID : 11 
+#  Expected Result : RES: 122 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   122 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 254 , OPB:  54 , INP_VALID : 11 
+#  Expected Result : RES:  52 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    52 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 251 , OPB: 107 , INP_VALID : 11 
+#  Expected Result : RES: 102 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   102 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  15 , OPB:  20 , INP_VALID : 11 
+#  Expected Result : RES:  35 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    35 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 166 , OPB: 212 , INP_VALID : 11 
+#  Expected Result : RES: 122 , COUT: 0 , OFLOW: 1 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   122 , COUT: 1 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 107 , OPB:   4 , INP_VALID : 11 
+#  Expected Result : RES: 111 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   111 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 141 , OPB: 225 , INP_VALID : 11 
+#  Expected Result : RES: 110 , COUT: 0 , OFLOW: 1 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   110 , COUT: 1 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 185 , OPB: 201 , INP_VALID : 11 
+#  Expected Result : RES: 130 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   130 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  70 , OPB:  60 , INP_VALID : 11 
+#  Expected Result : RES: 130 , COUT: 0 , OFLOW: 1 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   130 , COUT: 0 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  88 , OPB: 115 , INP_VALID : 11 
+#  Expected Result : RES: 203 , COUT: 0 , OFLOW: 1 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   203 , COUT: 0 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 220 , OPB:  48 , INP_VALID : 11 
+#  Expected Result : RES:  12 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    12 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:   0 , OPB:  67 , INP_VALID : 11 
+#  Expected Result : RES:  67 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    67 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 161 , OPB:  83 , INP_VALID : 11 
+#  Expected Result : RES: 244 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   244 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  95 , OPB: 135 , INP_VALID : 11 
+#  Expected Result : RES: 230 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   230 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  45 , OPB: 112 , INP_VALID : 11 
+#  Expected Result : RES: 157 , COUT: 0 , OFLOW: 1 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   157 , COUT: 0 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  49 , OPB:  18 , INP_VALID : 11 
+#  Expected Result : RES:  67 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:    67 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  13 , OPB:  21 , INP_VALID : 11 
+#  Expected Result : RES:  34 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    34 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 148 , OPB:  84 , INP_VALID : 11 
+#  Expected Result : RES: 232 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   232 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  19 , OPB: 195 , INP_VALID : 11 
+#  Expected Result : RES: 214 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   214 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 220 , OPB: 120 , INP_VALID : 11 
+#  Expected Result : RES:  84 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    84 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  95 , OPB:  35 , INP_VALID : 11 
+#  Expected Result : RES: 130 , COUT: 0 , OFLOW: 1 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   130 , COUT: 0 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  56 , OPB:  34 , INP_VALID : 11 
+#  Expected Result : RES:  90 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:    90 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 199 , OPB: 130 , INP_VALID : 11 
+#  Expected Result : RES:  73 , COUT: 0 , OFLOW: 1 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:    73 , COUT: 1 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 199 , OPB:  36 , INP_VALID : 11 
+#  Expected Result : RES: 235 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   235 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:   8 , OPB: 117 , INP_VALID : 11 
+#  Expected Result : RES: 125 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   125 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  26 , OPB:  56 , INP_VALID : 11 
+#  Expected Result : RES:  82 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    82 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  88 , OPB:  80 , INP_VALID : 11 
+#  Expected Result : RES: 168 , COUT: 0 , OFLOW: 1 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   168 , COUT: 0 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 164 , OPB: 101 , INP_VALID : 11 
+#  Expected Result : RES:   9 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:     9 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:   6 , OPB:  84 , INP_VALID : 11 
+#  Expected Result : RES:  90 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    90 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 200 , OPB:  72 , INP_VALID : 11 
+#  Expected Result : RES:  16 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    16 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 248 , OPB: 181 , INP_VALID : 11 
+#  Expected Result : RES: 173 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   173 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 131 , OPB: 155 , INP_VALID : 11 
+#  Expected Result : RES:  30 , COUT: 0 , OFLOW: 1 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    30 , COUT: 1 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 176 , OPB: 251 , INP_VALID : 11 
+#  Expected Result : RES: 171 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   171 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  48 , OPB:  24 , INP_VALID : 11 
+#  Expected Result : RES:  72 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:    72 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  70 , OPB:  97 , INP_VALID : 11 
+#  Expected Result : RES: 167 , COUT: 0 , OFLOW: 1 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   167 , COUT: 0 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  85 , OPB:  47 , INP_VALID : 11 
+#  Expected Result : RES: 132 , COUT: 0 , OFLOW: 1 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   132 , COUT: 0 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 222 , OPB: 211 , INP_VALID : 11 
+#  Expected Result : RES: 177 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   177 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 233 , OPB:  88 , INP_VALID : 11 
+#  Expected Result : RES:  65 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    65 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 195 , OPB: 212 , INP_VALID : 11 
+#  Expected Result : RES: 151 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   151 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 126 , OPB: 214 , INP_VALID : 11 
+#  Expected Result : RES:  84 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:    84 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 131 , OPB: 160 , INP_VALID : 11 
+#  Expected Result : RES:  35 , COUT: 0 , OFLOW: 1 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    35 , COUT: 1 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 191 , OPB:  69 , INP_VALID : 11 
+#  Expected Result : RES:   4 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:     4 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  69 , OPB: 117 , INP_VALID : 11 
+#  Expected Result : RES: 186 , COUT: 0 , OFLOW: 1 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   186 , COUT: 0 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 198 , OPB: 108 , INP_VALID : 11 
+#  Expected Result : RES:  50 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    50 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  49 , OPB: 156 , INP_VALID : 11 
+#  Expected Result : RES: 205 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   205 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 175 , OPB:  14 , INP_VALID : 11 
+#  Expected Result : RES: 189 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   189 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 178 , OPB: 222 , INP_VALID : 11 
+#  Expected Result : RES: 144 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   144 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 170 , OPB:  40 , INP_VALID : 11 
+#  Expected Result : RES: 210 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   210 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 154 , OPB: 211 , INP_VALID : 11 
+#  Expected Result : RES: 109 , COUT: 0 , OFLOW: 1 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   109 , COUT: 1 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 251 , OPB: 139 , INP_VALID : 11 
+#  Expected Result : RES: 134 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   134 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 204 , OPB: 113 , INP_VALID : 11 
+#  Expected Result : RES:  61 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    61 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  97 , OPB: 123 , INP_VALID : 11 
+#  Expected Result : RES: 220 , COUT: 0 , OFLOW: 1 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   220 , COUT: 0 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 145 , OPB: 192 , INP_VALID : 11 
+#  Expected Result : RES:  81 , COUT: 0 , OFLOW: 1 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    81 , COUT: 1 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 126 , OPB:  84 , INP_VALID : 11 
+#  Expected Result : RES: 210 , COUT: 0 , OFLOW: 1 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   210 , COUT: 0 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  73 , OPB: 231 , INP_VALID : 11 
+#  Expected Result : RES:  48 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:    48 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 131 , OPB:  91 , INP_VALID : 11 
+#  Expected Result : RES: 222 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   222 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 149 , OPB: 119 , INP_VALID : 11 
+#  Expected Result : RES:  12 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    12 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 230 , OPB: 175 , INP_VALID : 11 
+#  Expected Result : RES: 149 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   149 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA:  18 , OPB: 252 , INP_VALID : 11 
+#  Expected Result : RES:  14 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:    14 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 196 , OPB:  63 , INP_VALID : 11 
+#  Expected Result : RES:   3 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:     3 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 115 , OPB:  90 , INP_VALID : 11 
+#  Expected Result : RES: 205 , COUT: 0 , OFLOW: 1 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   205 , COUT: 0 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 254 , OPB: 116 , INP_VALID : 11 
+#  Expected Result : RES: 114 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:   114 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 226 , OPB: 226 , INP_VALID : 11 
+#  Expected Result : RES: 196 , COUT: 0 , OFLOW: 0 , EGL: 100 , ERR: 0 
+#  DUT Result	: RES:   196 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 152 , OPB: 159 , INP_VALID : 11 
+#  Expected Result : RES:  55 , COUT: 0 , OFLOW: 1 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:    55 , COUT: 1 , OFLOW: 1 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 242 , OPB: 189 , INP_VALID : 11 
+#  Expected Result : RES: 175 , COUT: 0 , OFLOW: 0 , EGL: 010 , ERR: 0 
+#  DUT Result	: RES:   175 , COUT: 1 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+#  [FAIL] Incorrect Output at MODE: 1 , CMD: 11 
+#  Inputs:	OPA: 180 , OPB:  84 , INP_VALID : 11 
+#  Expected Result : RES:   8 , COUT: 0 , OFLOW: 0 , EGL: 001 , ERR: 0 
+#  DUT Result	: RES:     8 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+# -----------------------------------------------------------------------
+# 
+# ===================================================
+#                  TEST SUMMARY                      
+# ===================================================
+# Total Tests Run : 304
+# Passed          : 153
+# Failed          : 151
+# >>> STATUS: BUGS FOUND <<<
+# ===================================================
+# 
+# ** Note: $finish    : ALU_tb.v(149)
+#    Time: 7205 ns  Iteration: 0  Instance: /alu_testbench
+# Saving coverage database on exit...
+# End time: 20:42:41 on May 09,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 3
