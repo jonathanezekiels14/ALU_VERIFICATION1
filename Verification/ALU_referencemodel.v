@@ -248,7 +248,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				12: begin
 					if(INP_VALID == 3) begin
-						if (|(OPB[(2*OP_WIDTH)-1 : OP_WIDTH])) begin
+						if (|(OPB[(2*OP_WIDTH)-1 : OP_WIDTH/2])) begin
             						ERR = 1'b1;
 						end
 						else begin
@@ -264,7 +264,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				13: begin
 					if(INP_VALID == 3) begin
-						if (|(OPB[(2*OP_WIDTH)-1 : OP_WIDTH])) begin
+						if (|(OPB[(2*OP_WIDTH)-1 : OP_WIDTH/2])) begin
             						ERR = 1'b1;
 						end
 						else begin

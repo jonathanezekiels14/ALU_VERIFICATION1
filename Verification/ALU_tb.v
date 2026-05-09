@@ -24,8 +24,8 @@ module alu_testbench();
 	integer test_count = 0;
 
 	//DUT Instantiation
-	alu #(.DATA_WIDTH(WIDTH))inst1 (
-		.clk(CLK),.rst(RST),.ce(CE),
+	alu #(.DATA_WIDTH(WIDTH)) inst1 (
+		.clk(CLK),.rst(RST),.ce(CE),.cmd(CMD),
 		.c_in(CIN),.mode(MODE),.inp_valid(INP_VALID),
 		.op_a(OPA),.op_b(OPB),.result(RES),
 		.err(ERR),.G(G),.L(L),.E(E),
@@ -48,10 +48,11 @@ module alu_testbench();
 	
 	// Driver to provide inputs to the 
 	task driver;
-		input [WIDTH-1:0] d_opa,d_opb;
+		input d_mode;
 		input [CMD_WIDTH-1:0] d_cmd;
+		input [WIDTH-1:0] d_opa,d_opb;
+		input d_cin;
 		input [1:0] d_inp_valid;
-		input d_cin,d_mode;
 		begin
 			@(negedge CLK);
 			OPA = d_opa;
@@ -61,7 +62,7 @@ module alu_testbench();
 			INP_VALID = d_inp_valid;
 			CMD = d_cmd;
 
-			@(posedge CLK);
+			repeat (2) @(posedge CLK);
 			
 			// Wait 2 Cycles more for Multiplication Commands
 			if(d_mode == 1 && (d_cmd == 9 || d_cmd == 10)) begin
@@ -120,7 +121,7 @@ module alu_testbench();
 		CLK = 0; RST = 1; CE = 0; MODE = 0; CMD = 0; 
         	OPA = 0; OPB = 0; CIN = 0; INP_VALID = 0;
 
-        	#20 RST = 0;
+        	#20 RST = 0; CE = 1;
         	@(posedge CLK);
 
         	$display("\n=== STARTING PHASE 1: DIRECTED CORNER CASES ===");
