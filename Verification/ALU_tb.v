@@ -120,22 +120,75 @@ module alu_testbench();
 	initial begin
 		CLK = 0; RST = 1; CE = 0; MODE = 0; CMD = 0; 
 		OPA = 0; OPB = 0; CIN = 0; INP_VALID = 0;
-
+		#5;
+		
+		$display("\n------------- Sanity Test Cases --------------");
+		driver(1'b1,4'd11, 8'h7F, 8'h01, 0, 2'b11); scoreboard(4'd0); // Asynchronous RST Test
+		CE = 1;
+		#5; RST = 0;
+		driver(1'b1,4'd11, 8'h7F, 8'h01, 0, 2'b11); scoreboard(4'd0); // Clock Enable Test
+		CE = 0;
+		driver(1'b1,4'd11, 8'h7F, 8'h01, 0, 2'b00); scoreboard(4'd0);
+		CE = 1;
+		driver(1'b0, 4'd0, 8'd1, 8'b11 , 0, 2'b11);scoreboard(4'd0); // Arithmetic Mode / Logical Mode
+		driver(1'b1, 4'd0, 8'd1, 8'b11 , 0, 2'b11);scoreboard(4'd0); // Arithmetic Mode / Logical Mode
+		#10; RST = 1;
 		#20 RST = 0; CE = 1;
 		@(posedge CLK);
 
 		$display("\n------------- Directed Test Cases --------------");
-		driver(1'b1, 4'd11, 8'h7F, 8'h01, 0, 2'b11); scoreboard(4'd11); // Signed Overflow
-		driver(1'b1, 4'd11, 8'h80, 8'hFF, 0, 2'b11); scoreboard(4'd11); // Signed Overflow (Negative)
-		driver(1'b0, 4'd0,  8'hAA, 8'h55, 0, 2'b11); scoreboard(4'd0);  // Bitwise Masking
-		driver(1'b1, 4'd0,  8'd10, 8'd20, 0, 2'b01); scoreboard(4'd0);  // Missing input error
+		// CMD_0_ADD
+		driver(1'b1, 4'd0, 8'd24, 8'd81, 0, 2'b11); scoreboard(4'd0); // Checking with VALID INPUT
+		driver(1'b1, 4'd0, 8'd24, 8'd81, 0, 2'b01); scoreboard(4'd0); // Checking with INVALID INPUT
+		driver(1'b1, 4'd0, 8'd255, 8'd1, 0, 2'b11); scoreboard(4'd0); // Checking with COUT
+		driver(1'b1, 4'd0, 8'd127, 8'd1, 0, 2'b11); scoreboard(4'd0); // Toggling Test
+		// CMD_1_SUB
+		driver(1'b1, 4'd1, 8'd84, 8'd67, 0, 2'b11); scoreboard(4'd1); // Valid Input Testcase
+		driver(1'b1, 4'd1, 8'd84, 8'd67,0,  2'b01); scoreboard(4'd1); // Invalid Input Testcase
+		driver(1'b1, 4'd1, 8'd200, 8'd231,  0, 2'b11); scoreboard(4'd1); // Overflow Testcase
+		driver(1'b1, 4'd1, 8'd128, 8'd1, 0, 2'b11); scoreboard(4'd1); // Toggling Test
+		driver(1'b1, 4'd1, 8'd0, 8'd1,   0, 2'b11); scoreboard(4'd1); // Subtraction with 0
+		
+		// CMD_2_ADD_CIN
+		driver(1'b1, 4'd2, 8'd27, 8'd33,   1, 2'b11); scoreboard(4'd2); // Checking with Valid input
+		driver(1'b1, 4'd2, 8'd27, 8'd33,   1, 2'b01); scoreboard(4'd2); // Checking with Invalid Input
+		driver(1'b1, 4'd2, 8'd240, 8'd15,   1, 2'b11); scoreboard(4'd2); // COUT Testcase
+		driver(1'b1, 4'd2, 8'd115, 8'd12,   1, 2'b11); scoreboard(4'd2); // Toggle Check
 
+		// CMD_3_SUB_CIN
+		driver(1'b1, 4'd3, 8'd115, 8'd12,   1, 2'b11); scoreboard(4'd3); // Checking Basic
+		driver(1'b1, 4'd3, 8'd115, 8'd12,   1, 2'b10); scoreboard(4'd3); // Checking Basic
+		driver(1'b1, 4'd3, 8'd115, 8'd211,   1, 2'b11); scoreboard(4'd3); // Checking Basic
+		driver(1'b1, 4'd3, 8'd131, 8'd3,   1, 2'b11); scoreboard(4'd3); // Checking Basic
+		
 		$display("\n------------- Randomized Testcases -------------");
-		generator(1'b0, 4'd0, 50);   // Logical AND
-		generator(1'b1, 4'd0, 100);  // Unsigned ADD
-		generator(1'b1, 4'd9, 50);   // Inc & Multiply (takes 3 cycles!)
-		generator(1'b1, 4'd11, 100); // Signed ADD
-
+		generator(1'b1, 4'd0, 100);   // CMD_0_ADD
+		generator(1'b1, 4'd1, 100);   // CMD_1_SUB
+		generator(1'b1, 4'd2, 100);   // CMD_2_ADD_CIN
+		generator(1'b1, 4'd3, 100);   // CMD_2_SUB_CIN
+		generator(1'b1, 4'd4, 100);   // CMD_3
+		generator(1'b1, 4'd5, 100);   // CMD_3
+		generator(1'b1, 4'd6, 100);   // CMD_3
+		generator(1'b1, 4'd7, 100);   // CMD_3
+		generator(1'b1, 4'd8, 100);   // CMD_3
+		generator(1'b1, 4'd9, 100);   // CMD_3
+		generator(1'b1, 4'd10, 100);   // CMD_3
+		generator(1'b1, 4'd11, 100);   // CMD_3
+		generator(1'b1, 4'd12, 100);   // CMD_3
+		generator(1'b0, 4'd0, 100);   // CMD_3
+		generator(1'b0, 4'd1, 100);   // CMD_3
+		generator(1'b0, 4'd2, 100);   // CMD_3
+		generator(1'b0, 4'd3, 100);   // CMD_3
+		generator(1'b0, 4'd4, 100);   // CMD_3
+		generator(1'b0, 4'd5, 100);   // CMD_3
+		generator(1'b0, 4'd6, 100);   // CMD_3
+		generator(1'b0, 4'd7, 100);   // CMD_3
+		generator(1'b0, 4'd8, 100);   // CMD_3
+		generator(1'b0, 4'd9, 100);   // CMD_3
+		generator(1'b0, 4'd10, 100);   // CMD_3
+		generator(1'b0, 4'd11, 100);   // CMD_3
+		generator(1'b0, 4'd12, 100);   // CMD_3
+		generator(1'b0, 4'd13, 100);   // CMD_3
 		$display("\n-------------------------------------------------");
 		$display("                 Test Summary                      ");
 		$display("---------------------------------------------------");
