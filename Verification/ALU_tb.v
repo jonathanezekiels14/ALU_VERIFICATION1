@@ -66,7 +66,7 @@ module alu_testbench();
 			
 			// Wait 2 Cycles more for Multiplication Commands
 			if(d_mode == 1 && (d_cmd == 9 || d_cmd == 10)) begin
-				repeat (2) @(posedge CLK);
+				repeat (1) @(posedge CLK);
 			end
 		end
 	endtask
