@@ -18,7 +18,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 			case (CMD)
 				0: begin
 					if(INP_VALID == 3) begin
-						RES=OPA+OPB;
+						RES[OP_WIDTH-1:0]=OPA+OPB;
 						COUT=RES[OP_WIDTH];
 					end
 					else begin
@@ -28,7 +28,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				1: begin 
 					if(INP_VALID == 3) begin
-						RES=OPA-OPB;
+						RES[OP_WIDTH-1:0]=OPA-OPB;
 						OFLOW=(OPA<OPB);
 					end
 					else begin
@@ -38,7 +38,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				2: begin
 					if(INP_VALID == 3) begin
-						RES = OPA + OPB +CIN;
+						RES[OP_WIDTH-1:0] = OPA + OPB +CIN;
 						COUT = RES [OP_WIDTH];
 					end
 					else begin
@@ -48,7 +48,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				3: begin
 					if(INP_VALID == 3) begin
-						RES = OPA - OPB - CIN;
+						RES[OP_WIDTH-1] = OPA - OPB - CIN;
 						OFLOW = (OPA<(OPB+CIN));
 					end
 					else begin
@@ -58,7 +58,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				4: begin
 					if(INP_VALID == 3 || INP_VALID == 1) begin
-						RES = OPA + 1;
+						RES[OP_WIDTH-1:0] = OPA + 1;
 					end
 					else begin
 						RES = 0;
@@ -67,7 +67,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				5: begin
 					if(INP_VALID == 3 || INP_VALID == 1 ) begin
-						RES = OPA - 1;
+						RES[OP_WIDTH-1:0] = OPA - 1;
 					end
 					else begin
 						RES = 0;
@@ -76,7 +76,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				6: begin
 					if(INP_VALID == 3 || INP_VALID == 2) begin
-						RES = OPB + 1;
+						RES [OP_WIDTH-1:0] = OPB + 1;
 					end
 					else begin
 						RES = 0;
@@ -85,7 +85,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				7: begin
 					if(INP_VALID == 3 || INP_VALID == 2 ) begin
-						RES = OPB - 1;
+						RES [OP_WIDTH-1:0] = OPB - 1;
 					end
 					else begin
 						RES = 0;
@@ -122,7 +122,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				11: begin
 					if(INP_VALID == 3) begin
-						RES = $signed(OPA) + $signed(OPB);
+						RES [OP_WIDTH-1:0] = $signed(OPA) + $signed(OPB);
 						OFLOW = (OPA[OP_WIDTH-1] == OPB[OP_WIDTH-1]) && (RES [OP_WIDTH-1] != OPA[OP_WIDTH-1]);	
 						{E,G,L}={($signed(OPA)==$signed(OPB)),($signed(OPA)>$signed(OPB)),($signed(OPA)<$signed(OPB))};
 					end
@@ -133,7 +133,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				12: begin
 					if(INP_VALID == 3) begin
-						RES = $signed(OPA) - $signed(OPB);
+						RES [OP_WIDTH-1:0] = $signed(OPA) - $signed(OPB);
 						OFLOW = (OPA[OP_WIDTH-1] == OPB[OP_WIDTH-1]) && (RES [OP_WIDTH-1] != OPA[OP_WIDTH-1]);	
 						{E,G,L}={($signed(OPA)==$signed(OPB)),($signed(OPA)>$signed(OPB)),($signed(OPA)<$signed(OPB))};
 					end
@@ -152,7 +152,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 			case(CMD)
 				0: begin
 					if(INP_VALID == 3) 
-						RES = OPA & OPB;
+						RES [OP_WIDTH-1:0] = OPA & OPB;
 					else begin
 						RES = 0;
 						ERR = 1;
@@ -160,7 +160,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				1: begin
 					if(INP_VALID == 3)
-						RES = ~ (OPA & OPB);
+						RES [OP_WIDTH-1:0] = ~ (OPA & OPB);
 					else begin
 						RES = 0;
 						ERR = 1;
@@ -168,7 +168,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				2: begin
 					if(INP_VALID == 3)
-						RES = (OPA | OPB);
+						RES [OP_WIDTH-1:0] = (OPA | OPB);
 					else begin
 						RES = 0;
 						ERR = 1;
@@ -176,7 +176,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				3: begin
 					if(INP_VALID == 3)
-						RES = ~ (OPA & OPB);
+						RES [OP_WIDTH-1:0] = ~ (OPA & OPB);
 					else begin
 						RES = 0;
 						ERR = 1;
@@ -184,7 +184,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				4: begin
 					if(INP_VALID == 3)
-						RES =  (OPA ^ OPB);
+						RES [OP_WIDTH-1:0] =  (OPA ^ OPB);
 					else begin
 						RES = 0;
 						ERR = 1;
@@ -192,7 +192,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				5: begin
 					if(INP_VALID == 3)
-						RES = ~ (OPA ^ OPB);
+						RES [OP_WIDTH-1:0] = ~ (OPA ^ OPB);
 					else begin
 						RES = 0;
 						ERR = 1;
@@ -200,7 +200,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				6: begin
 					if(INP_VALID == 3 || INP_VALID == 1)
-						RES = ~ OPA;
+						RES [OP_WIDTH-1:0] = ~ OPA;
 					else begin
 						RES = 0;
 						ERR = 1;
@@ -208,7 +208,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				7: begin
 					if(INP_VALID == 3 || INP_VALID == 2)
-						RES = ~OPB;
+						RES [OP_WIDTH-1:0] = ~OPB;
 					else begin
 						RES = 0;
 						ERR = 1;
@@ -216,7 +216,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				8: begin
 					if(INP_VALID == 3 || INP_VALID == 1)
-						RES = OPA>>1;
+						RES [OP_WIDTH-1:0] = OPA>>1;
 					else begin
 						RES = 0;
 						ERR = 1;
@@ -224,7 +224,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				9: begin
 					if(INP_VALID == 3 || INP_VALID == 1)
-						RES = OPA<<1;
+						RES [OP_WIDTH-1:0] = OPA<<1;
 					else begin
 						RES = 0;
 						ERR = 1;
@@ -232,7 +232,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				10: begin
 					if(INP_VALID == 3 || INP_VALID == 2)
-						RES = OPB>>1;
+						RES [OP_WIDTH-1:0] = OPB>>1;
 					else begin
 						RES = 0;
 						ERR = 1;
@@ -240,7 +240,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				11: begin
 					if(INP_VALID == 3 || INP_VALID == 2)
-						RES = OPB<<1;
+						RES [OP_WIDTH-1:0] = OPB<<1;
 					else begin
 						RES = 0;
 						ERR = 1;
