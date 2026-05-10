@@ -1,8 +1,11 @@
-# Parameterized ALU – RTL Design & Verificatio
-
+# Parameterized ALU – RTL Design & Verification
 A fully parameterized 8-bit (scalable) Arithmetic Logic Unit implemented in synthesizable Verilog HDL, verified using a self-checking testbench against a golden reference model. Simulation and coverage analysis performed in Mentor Questa SIM.
 
 ---
+
+## Repository Structure
+
+```
 .
 ├── src/
 │   ├── design/
@@ -14,6 +17,8 @@ A fully parameterized 8-bit (scalable) Arithmetic Logic Unit implemented in synt
 │   └── verification_report.md      # Full verification report
 ├── Miscellaneous
 └── README.md
+```
+
 ---
 
 ## Design Overview
