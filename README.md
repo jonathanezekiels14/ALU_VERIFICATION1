@@ -3,6 +3,18 @@
 A fully parameterized 8-bit (scalable) Arithmetic Logic Unit implemented in synthesizable Verilog HDL, verified using a self-checking testbench against a golden reference model. Simulation and coverage analysis performed in Mentor Questa SIM.
 
 ---
+.
+├── src/
+│   ├── design/
+│   │   └── alu.v                   # DUT – Parameterized ALU RTL
+│   └── testbench/
+│       └── ALU_tb.v                # Self-checking testbench
+├── docs/
+│   ├── test_plan.md                # Test plan with feature IDs and pass/fail status
+│   └── verification_report.md      # Full verification report
+├── Miscellaneous
+└── README.md
+---
 
 ## Design Overview
 
