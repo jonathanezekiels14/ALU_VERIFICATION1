@@ -102,7 +102,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				9: begin
 					if(INP_VALID == 3) begin
-						RES = (OPA + 1) * (OPB + 1);
+						RES = ((OPA + 1'b1) & ((1<<OP_WIDTH)-1)) * ((OPB + 1'b1) & ((1<<OP_WIDTH)-1));
 					end
 					else begin
 						RES = 0;
@@ -111,7 +111,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				10: begin
 					if(INP_VALID == 3) begin
-						RES = ((OPA << 1) * OPB);
+						RES = ((OPA << 1) & ((1<<OP_WIDTH)-1)) * OPB;
 					end
 					else begin
 						RES = 0;
