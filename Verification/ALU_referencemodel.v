@@ -174,7 +174,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				3: begin
 					if(INP_VALID == 3)
-						RES [OP_WIDTH-1:0] = ~ (OPA & OPB);
+						RES [OP_WIDTH-1:0] = ~ (OPA | OPB);
 					else begin
 						RES = 0;
 						ERR = 1;
