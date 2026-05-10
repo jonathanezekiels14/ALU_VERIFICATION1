@@ -15,7 +15,7 @@ module alu_testbench();
 
 
 	// Reference Model Signals
-	wire [WIDTH-1:0] RES_ref;
+	wire [2*WIDTH-1:0] RES_ref;
 	wire COUT_ref,OFLOW_ref,G_ref,E_ref,L_ref,ERR_ref;
 
 	// Pass / Fail Counters
