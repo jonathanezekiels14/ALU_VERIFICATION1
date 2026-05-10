@@ -18,8 +18,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 			case (CMD)
 				0: begin
 					if(INP_VALID == 3) begin
-						RES[OP_WIDTH-1:0]=OPA+OPB;
-						COUT=RES[OP_WIDTH];
+						{COUT,RES[OP_WIDTH-1:0]}=OPA+OPB;
 					end
 					else begin
 						RES=0;
@@ -38,8 +37,7 @@ module reference_model #(parameter OP_WIDTH = 8, parameter CMD_WIDTH = 4)(
 				end
 				2: begin
 					if(INP_VALID == 3) begin
-						RES[OP_WIDTH-1:0] = OPA + OPB +CIN;
-						COUT = RES [OP_WIDTH];
+						{COUT,RES[OP_WIDTH-1:0]} = OPA + OPB +CIN;
 					end
 					else begin
 						RES=0;
