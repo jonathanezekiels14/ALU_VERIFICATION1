@@ -111,7 +111,7 @@ module alu_testbench();
 					rand_opb = $random % 8;
 				end
 
-				driver(target_mode, target_cmd, rand_opa, rand_opb, $random , 2'b11);
+				driver(target_mode, target_cmd, rand_opa, rand_opb, $random , $urandom_range(3,0));
 				scoreboard(target_cmd);
 			end
 		end
@@ -137,6 +137,9 @@ module alu_testbench();
 		@(posedge CLK);
 
 		$display("\n------------- Directed Test Cases --------------");
+		// Wrong Command
+		driver(1'b1, 4'd15, 8'd1, 8'b11 , 0, 2'b11);scoreboard(4'd10); // Arithmetic Mode / Logical Mode
+		driver(1'b0, 4'd15, 8'd1, 8'b11 , 0, 2'b11);scoreboard(4'd10); // Arithmetic Mode / Logical Mode
 		// CMD_0_ADD
 		driver(1'b1, 4'd0, 8'd24, 8'd81, 0, 2'b11); scoreboard(4'd0); // Checking with VALID INPUT
 		driver(1'b1, 4'd0, 8'd24, 8'd81, 0, 2'b01); scoreboard(4'd0); // Checking with INVALID INPUT
@@ -157,11 +160,136 @@ module alu_testbench();
 
 		// CMD_3_SUB_CIN
 		driver(1'b1, 4'd3, 8'd115, 8'd12,   1, 2'b11); scoreboard(4'd3); // Checking Basic
-		driver(1'b1, 4'd3, 8'd115, 8'd12,   1, 2'b10); scoreboard(4'd3); // Checking Basic
+		driver(1'b1, 4'd3, 8'd115, 8'd12,   1, 2'b10); scoreboard(4'd3); // Checking 
 		driver(1'b1, 4'd3, 8'd115, 8'd211,   1, 2'b11); scoreboard(4'd3); // Checking Basic
 		driver(1'b1, 4'd3, 8'd131, 8'd3,   1, 2'b11); scoreboard(4'd3); // Checking Basic
-		
+	
+
+		// CMD_4_INC_A
+		driver(1'b1, 4'd4, 8'd130, 8'd3,   0, 2'b11); scoreboard(4'd4); // Checking Basic
+		driver(1'b1, 4'd4, 8'd255, 8'd3,   0, 2'b01); scoreboard(4'd4); // Checking MAX
+		driver(1'b1, 4'd4, 8'd127, 8'd3,   0, 2'b01); scoreboard(4'd4); // Checking Toggle
+		driver(1'b1, 4'd4, 8'd45, 8'd3,   0, 2'b00); scoreboard(4'd4); // Checking INP INVALID
+
+		// CMD_5_DEC_A
+		driver(1'b1, 4'd5, 8'd45, 8'd3,   0, 2'b11); scoreboard(4'd5); // Checking Basic 
+		driver(1'b1, 4'd5, 8'd0, 8'd3,   0, 2'b01); scoreboard(4'd5); // Checking Decrementing 0  
+		driver(1'b1, 4'd5, 8'd127, 8'd3,   0, 2'b11); scoreboard(4'd5); // Checking Toggle
+		driver(1'b1, 4'd5, 8'd45, 8'd3,   0, 2'b00); scoreboard(4'd5); // Checking INP INVALID
+
+		// CMD_6_INC_B
+
+		driver(1'b1, 4'd6, 8'd3, 8'd130,   0, 2'b11); scoreboard(4'd6); // Checking Basic
+		driver(1'b1, 4'd6, 8'd3, 8'd255,   0, 2'b10); scoreboard(4'd6); // Checking MAX
+		driver(1'b1, 4'd6, 8'd3, 8'd127,   0, 2'b01); scoreboard(4'd6); // Checking Toggle
+		driver(1'b1, 4'd6, 8'd3, 8'd45,   0, 2'b00); scoreboard(4'd6); // Checking INP INVALID
+
+		// CMD_7_DEC_A
+		driver(1'b1, 4'd7, 8'd3, 8'd45,   0, 2'b11); scoreboard(4'd7); // Checking Basic 
+		driver(1'b1, 4'd7, 8'd3, 8'd0,   0, 2'b01); scoreboard(4'd7); // Checking Decrementing 0  
+		driver(1'b1, 4'd7, 8'd31, 8'd127,   0, 2'b11); scoreboard(4'd7); // Checking Toggle
+		driver(1'b1, 4'd7, 8'd33, 8'd45,   0, 2'b11); scoreboard(4'd7); // Checking INP INVALID
+
+		// CMD_8_CMP
+		driver(1'b1, 4'd8, 8'd100, 8'd100,   0, 2'b11); scoreboard(4'd8); // CMP EQUAL
+		driver(1'b1, 4'd8, 8'd100, 8'd67,   0, 2'b11); scoreboard(4'd8); // CMP GREATER
+		driver(1'b1, 4'd8, 8'd122, 8'd200,   0, 2'b11); scoreboard(4'd8); // CMP LESS
+		driver(1'b1, 4'd8, 8'd100, 8'd100,   0, 2'b01); scoreboard(4'd8); // CMP INVALID INP
+		driver(1'b1, 4'd8, 8'd100, 8'd100,   0, 2'b10); scoreboard(4'd8); // CMP INVAID INP
+		driver(1'b1, 4'd8, 8'd100, 8'd100,   0, 2'b01); scoreboard(4'd8); // CMP INP VALID
+
+		// CMD_9_MUL
+
+		driver(1'b1, 4'd9, 8'd67, 8'd67,   0, 2'b11); scoreboard(4'd9); // Basic MUL
+		driver(1'b1, 4'd9, 8'd255, 8'd56,   0, 2'b11); scoreboard(4'd9); // MUL with 0
+		driver(1'b1, 4'd9, 8'd254, 8'd254,   0, 2'b11); scoreboard(4'd9); // Basic MUL
+		driver(1'b1, 4'd9, 8'd254, 8'd0,   0, 2'b11); scoreboard(4'd9); // Basic MUL
+		driver(1'b1, 4'd9, 8'd254, 8'd0,   0, 2'b00); scoreboard(4'd9); // Basic MUL
+		driver(1'b1, 4'd9, 8'd254, 8'd0,   0, 2'b01); scoreboard(4'd9); // Basic MUL
+		driver(1'b1, 4'd9, 8'd254, 8'd0,   0, 2'b10); scoreboard(4'd9); // Basic MUL
+		driver(1'b1, 4'd9, 8'd1, 8'd22,   0, 2'b11); scoreboard(4'd9); // Basic MUL
+		driver(1'b1, 4'd9, 8'd1, 8'd22,   0, 2'b10); scoreboard(4'd9); // Basic MUL
+		// CMD_10_MUL
+
+		driver(1'b1, 4'd10, 8'd254, 8'd0,   0, 2'b11); scoreboard(4'd10); // Basic MUL
+		driver(1'b1, 4'd10, 8'd128, 8'd0,   0, 2'b11); scoreboard(4'd10); // MUL with 0
+		driver(1'b1, 4'd10, 8'd127, 8'd255,   0, 2'b11); scoreboard(4'd10); // Basic Pass Through
+		driver(1'b1, 4'd10, 8'd127, 8'd0,   0, 2'b11); scoreboard(4'd10); // Basic MUL
+		driver(1'b1, 4'd10, 8'd127, 8'd0,   0, 2'b00); scoreboard(4'd10); // INP INVALID
+		driver(1'b1, 4'd10, 8'd127, 8'd0,   0, 2'b01); scoreboard(4'd10); // INP INVALID
+		driver(1'b1, 4'd10, 8'd127, 8'd0,   0, 2'b10); scoreboard(4'd10); // INP INVALID
+
+		// CMD_11_SiADD
+		driver(1'b1, 4'd11, 8'd5, -8'd6,   0, 2'b11); scoreboard(4'd11); // Basic Signed ADD
+		driver(1'b1, 4'd11, -8'd21, -8'd67,   0, 2'b11); scoreboard(4'd11); // Basic Signed ADD
+		driver(1'b1, 4'd11, 8'd255, 8'd1,   0, 2'b11); scoreboard(4'd11); // Basic Signed ADD
+		driver(1'b1, 4'd11, 8'd11, 8'd0,   0, 2'b11); scoreboard(4'd11); // Basic Signed ADD
+		driver(1'b1, 4'd11, 8'd5, -8'd0,   0, 2'b11); scoreboard(4'd11); // Basic Signed ADD
+		driver(1'b1, 4'd11, 8'd5, 8'd66,   0, 2'b01); scoreboard(4'd11); // Basic Signed ADD
+		driver(1'b1, 4'd11, 8'd5, 8'd66,   0, 2'b00); scoreboard(4'd11); // Basic Signed ADD
+		driver(1'b1, 4'd11, 8'd5, 8'd66,   0, 2'b10); scoreboard(4'd11); // Basic Signed ADD
+
+		// CMD_12_SiSUB
+		driver(1'b1, 4'd12, 8'd5, 8'd66,   0, 2'b11); scoreboard(4'd12); // Basic Signed SUB
+		driver(1'b1, 4'd12, 8'd26, -8'd6,   0, 2'b11); scoreboard(4'd12); // Basic Signed SUB
+		driver(1'b1, 4'd12, 8'd255, -8'd1,   0, 2'b11); scoreboard(4'd12); // Corner Case
+		driver(1'b1, 4'd12, 8'd5, 8'd0,   0, 2'b11); scoreboard(4'd12); // Corner Case
+		driver(1'b1, 4'd12, 8'd128, 8'd1,   0, 2'b11); scoreboard(4'd12); // Corner Case
+		driver(1'b1, 4'd12, 8'd127, -8'd1,   0, 2'b11); scoreboard(4'd12); // Corner Case
+		driver(1'b1, 4'd12, -8'd12, -8'd74,   1, 2'b11); scoreboard(4'd12); // Corner Case
+		driver(1'b1, 4'd12, -8'd12, -8'd74,   1, 2'b10); scoreboard(4'd12); // Corner Case
+		driver(1'b1, 4'd12, -8'd12, -8'd74,   1, 2'b01); scoreboard(4'd12); // Corner Case
+
+		// MODE = 0 
+		// CMD_0_AND -> CMD_7_NOT_B
+		driver(1'b0, 4'd0, 8'd12, 8'd74,   0, 2'b10); scoreboard(4'd0); // Corner Case
+		driver(1'b0, 4'd1, 8'd12, 8'd74,   0, 2'b10); scoreboard(4'd1); // Corner Case
+		driver(1'b0, 4'd2, 8'd12, 8'd74,   0, 2'b10); scoreboard(4'd2); // Corner Case
+		driver(1'b0, 4'd3, 8'd12, 8'd74,   0, 2'b10); scoreboard(4'd3); // Corner Case
+		driver(1'b0, 4'd4, 8'd12, 8'd74,   0, 2'b10); scoreboard(4'd4); // Corner Case
+		driver(1'b0, 4'd5, 8'd12, 8'd74,   0, 2'b10); scoreboard(4'd5); // Corner Case
+		driver(1'b0, 4'd6, 8'd12, 8'd74,   0, 2'b00); scoreboard(4'd6); // Corner Case
+		driver(1'b0, 4'd7, 8'd12, 8'd74,   0, 2'b01); scoreboard(4'd7); // Corner Case
+
+		// CMD_8_SHR1_A
+		driver(1'b0, 4'd8, 8'd128, 8'd74,   0, 2'b01); scoreboard(4'd8); // Corner Case
+		driver(1'b0, 4'd8, 8'd1, 8'd74,   0, 2'b01); scoreboard(4'd8); // Corner Case
+		driver(1'b0, 4'd8, 8'd1, 8'd74,   0, 2'b10); scoreboard(4'd8); // Corner Case
+
+		// CMD_9_SHIL_A
+		driver(1'b0, 4'd9, 8'd128, 8'd74,   0, 2'b01); scoreboard(4'd9); // Corner Case
+		driver(1'b0, 4'd9, 8'd1, 8'd74,   0, 2'b01); scoreboard(4'd9); // Corner Case
+		driver(1'b0, 4'd9, 8'd1, 8'd74,   0, 2'b10); scoreboard(4'd9); // Corner Case
+
+		// CMD_10_SHR1_B
+		driver(1'b0, 4'd10, 8'd12, 8'd128,   0, 2'b10); scoreboard(4'd10); // Corner Case
+		driver(1'b0, 4'd10, 8'd11, 8'd1,   0, 2'b10); scoreboard(4'd10); // Corner Case
+		driver(1'b0, 4'd10, 8'd1, 8'd74,   0, 2'b01); scoreboard(4'd10); // Corner Case
+
+		// CMD_11_SHIL_B
+		driver(1'b0, 4'd11, 8'd1, 8'd128,   0, 2'b01); scoreboard(4'd11); // Corner Case
+		driver(1'b0, 4'd11, 8'd17, 8'd1,   0, 2'b01); scoreboard(4'd11); // Corner Case
+		driver(1'b0, 4'd11, 8'd1, 8'd74,   0, 2'b01); scoreboard(4'd11); // Corner Case
+
+		// CMD_12_ROL_A_B
+		driver(1'b0, 4'd12, 8'd1, 8'd0,   0, 2'b11); scoreboard(4'd12); // Roll by 0
+		driver(1'b0, 4'd12, 8'd155, 8'd4,   0, 2'b11); scoreboard(4'd12); // Roll by 4
+		driver(1'b0, 4'd12, 8'd24, 8'd7,   0, 2'b11); scoreboard(4'd12); // Roll by 7
+		driver(1'b0, 4'd12, 8'd24, 8'd64,   0, 2'b11); scoreboard(4'd12); // Roll by 0
+		driver(1'b0, 4'd12, 8'd24, 8'd212,   0, 2'b11); scoreboard(4'd12); // Roll by 0
+		driver(1'b0, 4'd12, 8'd24, 8'd212,   0, 2'b01); scoreboard(4'd12); // INP INVALID
+
+		// CMD_13_ROR_A_B
+		driver(1'b0, 4'd13, 8'd128, 8'd0,   0, 2'b11); scoreboard(4'd13); // Roll by 0
+		driver(1'b0, 4'd13, 8'd172, 8'd4,   0, 2'b11); scoreboard(4'd13); // Roll by 4
+		driver(1'b0, 4'd13, 8'd170, 8'd7,   0, 2'b11); scoreboard(4'd13); // Roll by 7
+		driver(1'b0, 4'd13, 8'd170, 8'd64,   0, 2'b11); scoreboard(4'd13); // Roll by 0
+		driver(1'b0, 4'd13, 8'd170, 8'd167,   0, 2'b11); scoreboard(4'd13); // Roll by HIGH
+		driver(1'b0, 4'd13, 8'd170, 8'd7,   0, 2'b10); scoreboard(4'd13); // INP_INVALID
+
+
 		$display("\n------------- Randomized Testcases -------------");
+		// MODE = 1
 		generator(1'b1, 4'd0, 100);   // CMD_0_ADD
 		generator(1'b1, 4'd1, 100);   // CMD_1_SUB
 		generator(1'b1, 4'd2, 100);   // CMD_2_ADD_CIN
@@ -175,6 +303,7 @@ module alu_testbench();
 		generator(1'b1, 4'd10, 100);   // CMD_3
 		generator(1'b1, 4'd11, 100);   // CMD_3
 		generator(1'b1, 4'd12, 100);   // CMD_3
+		// MODE = 0
 		generator(1'b0, 4'd0, 100);   // CMD_3
 		generator(1'b0, 4'd1, 100);   // CMD_3
 		generator(1'b0, 4'd2, 100);   // CMD_3
