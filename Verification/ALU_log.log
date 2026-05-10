@@ -1,5 +1,5 @@
 # vsim work.alu_testbench -l ALU_log.log -coverage -c -do "coverage save -onexit -codeAll ALU.ucdb; run -all; exit" 
-# Start time: 15:41:37 on May 10,2026
+# Start time: 15:52:54 on May 10,2026
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # ** Warning: ALU_tb.v(36): (vopt-2241) Connection width does not match width of port 'RES'. The port definition is at: ALU_referencemodel.v(6).
 # ** Warning: ALU_referencemodel.v(251): (vopt-2697) MSB of part-select into 'OPB' is out of bounds.
@@ -386,12 +386,9 @@
 #  [PASS] Inputs: OPA:  24 , OPB:   7 , INP_VALID : 11 
 #  Expected Result : RES:  12 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
 #  DUT Result	: RES:    12 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
-# -----------------------------------------------------------------------
-#  [FAIL] Incorrect Output at MODE: 0 , CMD: 12 
-#  Inputs:	OPA:  24 , OPB:  64 , INP_VALID : 11 
-#  Expected Result : RES:   0 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 1 
-#  DUT Result	: RES:    24 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 1 
-# -----------------------------------------------------------------------
+#  [PASS] Inputs: OPA:  24 , OPB:   x , INP_VALID : 11 
+#  Expected Result : RES:   x , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    12 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: x 
 # -----------------------------------------------------------------------
 #  [FAIL] Incorrect Output at MODE: 0 , CMD: 12 
 #  Inputs:	OPA:  24 , OPB: 212 , INP_VALID : 11 
@@ -410,12 +407,9 @@
 #  [PASS] Inputs: OPA: 170 , OPB:   7 , INP_VALID : 11 
 #  Expected Result : RES:  85 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
 #  DUT Result	: RES:    85 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
-# -----------------------------------------------------------------------
-#  [FAIL] Incorrect Output at MODE: 0 , CMD: 13 
-#  Inputs:	OPA: 170 , OPB:  64 , INP_VALID : 11 
-#  Expected Result : RES:   0 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 1 
-#  DUT Result	: RES:   170 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 1 
-# -----------------------------------------------------------------------
+#  [PASS] Inputs: OPA: 170 , OPB:   x , INP_VALID : 11 
+#  Expected Result : RES:   x , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: 0 
+#  DUT Result	: RES:    85 , COUT: 0 , OFLOW: 0 , EGL: 000 , ERR: x 
 # -----------------------------------------------------------------------
 #  [FAIL] Incorrect Output at MODE: 0 , CMD: 13 
 #  Inputs:	OPA: 170 , OPB: 167 , INP_VALID : 11 
@@ -8946,13 +8940,13 @@
 #                  Test Summary                      
 # ---------------------------------------------------
 # Total Tests Run : 2811
-# Passed          : 2651
-# Failed          : 160
+# Passed          : 2653
+# Failed          : 158
 #  ***	    Bugs Found	     ***
 # ---------------------------------------------------
 # 
 # ** Note: $finish    : ALU_tb.v(333)
 #    Time: 60685 ns  Iteration: 0  Instance: /alu_testbench
 # Saving coverage database on exit...
-# End time: 15:41:39 on May 10,2026, Elapsed time: 0:00:02
+# End time: 15:52:55 on May 10,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 3

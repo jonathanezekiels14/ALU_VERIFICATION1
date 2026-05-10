@@ -9,16 +9,16 @@ z2
 cModel Technology
 Z0 d/fetools/work_area/frontend/Batch_11/jonathanezekiels/ALU_VERIFICATION1/Verification
 T_opt
-!s110 1778407898
-VXA6iiK2;jdgXA@<L[ohhE1
+!s110 1778409407
+V4fAW8JThXk^jRE_lZ^CCb3
 04 13 4 work alu_testbench fast 0
-=1-6805caf5892e-6a0059da-3125d-221ec
+=1-6805caf5892e-6a005fbf-77018-2551b
 o-quiet -auto_acc_if_foreign -work work
 Z1 tCvgOpt 0
 n@_opt
 OE;O;10.6c;65
 valu
-!s110 1778407894
+!s110 1778409368
 !i10b 1
 !s100 ;RTb=DckSfW=EIoZg:1Ai3
 IVS:GNEjb:QeY=>4078<[b0
@@ -32,21 +32,21 @@ Z3 OE;L;10.6c;65
 r1
 !s85 0
 31
-!s108 1778407894.000000
+!s108 1778409368.000000
 !s107 ALU_toverify.v|
-!s90 +acc|+cover|-l|ALU_log.log|ALU_toverify.v|
+!s90 +acc|+cover|-l|ALU_finallog.log|ALU_toverify.v|
 !i113 0
 !s102 +cover
 o+acc +cover -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R1
 valu_testbench
-Z4 !s110 1778407883
+Z4 !s110 1778408875
 !i10b 1
-!s100 BBKUTR?Kn2=;ASanbiQ=Y0
-I=nbRATHg6H^[Wj<YXjFnH1
+!s100 ;44m7Sjk<2ZTbG_[IgKYz0
+ILo;]WijL`B[[B7=KS>IPH3
 R2
 R0
-w1778407880
+w1778408862
 8ALU_tb.v
 FALU_tb.v
 L0 4
@@ -54,7 +54,7 @@ R3
 r1
 !s85 0
 31
-Z5 !s108 1778407883.000000
+Z5 !s108 1778408875.000000
 Z6 !s107 ALU_toverify.v|ALU_referencemodel.v|ALU_tb.v|
 Z7 !s90 ALU_tb.v|
 !i113 0

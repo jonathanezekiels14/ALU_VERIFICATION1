@@ -78,8 +78,8 @@ b3:[{dummy:0},
 ,{cr:'c',t:'I',z:'                        if (inp_valid == 2\'b11) begin                    ...',f:'ALU_toverify.v',l:'121',h:'72',c:'g'}
 ,{cr:'c',t:'E',z:'                        else begin result <= {RES_WIDTH{1\'b0}}; err <= 1\'...',f:'ALU_toverify.v',l:'134',h:'140',c:'g'}
 ]},
-{anchor:'cvg22',items:[{z:'                            case (op_b[2:0])',f:'ALU_toverify.v',l:'123',c:'Y',p:'88.88'}
-,{cr:'c',t:'T',z:'                                3\'d0: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'124',h:'10',c:'g'}
+{anchor:'cvg22',items:[{z:'                            case (op_b[2:0])',f:'ALU_toverify.v',l:'123',c:'G',p:'100.00'}
+,{cr:'c',t:'T',z:'                                3\'d0: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'124',h:'8',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d1: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'125',h:'8',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d2: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'126',h:'6',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d3: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'127',h:'6',c:'g'}
@@ -87,14 +87,14 @@ b3:[{dummy:0},
 ,{cr:'c',t:'T',z:'                                3\'d5: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'129',h:'18',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d6: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'130',h:'6',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d7: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'131',h:'10',c:'g'}
-,{cr:'m',t:'A',z:'                            case (op_b[2:0])',f:'ALU_toverify.v',l:'123',h:'0',c:'r'}
+,{cr:'c',t:'A',z:'                            case (op_b[2:0])',f:'ALU_toverify.v',l:'123',h:'2',c:'g'}
 ]},
 {anchor:'cvg23',items:[{z:'                        if (inp_valid == 2\'b11) begin                    ...',f:'ALU_toverify.v',l:'138',c:'G',p:'100.00'}
 ,{cr:'c',t:'I',z:'                        if (inp_valid == 2\'b11) begin                    ...',f:'ALU_toverify.v',l:'138',h:'56',c:'g'}
 ,{cr:'c',t:'E',z:'                        else begin result <= {RES_WIDTH{1\'b0}}; err <= 1\'...',f:'ALU_toverify.v',l:'151',h:'165',c:'g'}
 ]},
-{anchor:'cvg24',items:[{z:'                            case (op_b[2:0])',f:'ALU_toverify.v',l:'140',c:'Y',p:'88.88'}
-,{cr:'c',t:'T',z:'                                3\'d0: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'141',h:'10',c:'g'}
+{anchor:'cvg24',items:[{z:'                            case (op_b[2:0])',f:'ALU_toverify.v',l:'140',c:'G',p:'100.00'}
+,{cr:'c',t:'T',z:'                                3\'d0: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'141',h:'8',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d1: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'142',h:'8',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d2: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'143',h:'6',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d3: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'144',h:'2',c:'g'}
@@ -102,7 +102,7 @@ b3:[{dummy:0},
 ,{cr:'c',t:'T',z:'                                3\'d5: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'146',h:'2',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d6: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'147',h:'4',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d7: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'148',h:'12',c:'g'}
-,{cr:'m',t:'A',z:'                            case (op_b[2:0])',f:'ALU_toverify.v',l:'140',h:'0',c:'r'}
+,{cr:'c',t:'A',z:'                            case (op_b[2:0])',f:'ALU_toverify.v',l:'140',h:'2',c:'g'}
 ]},
 {anchor:'cvg25',items:[{z:'                case (cmd)',f:'ALU_toverify.v',l:'160',c:'G',p:'100.00'}
 ,{cr:'c',t:'T',z:'                    4\'d0: begin',f:'ALU_toverify.v',l:'161',h:'211',c:'g'}
@@ -268,8 +268,8 @@ b5:[{dummy:0},
 ,{cr:'c',t:'I',z:'                        if (inp_valid == 2\'b11) begin                    ...',f:'ALU_toverify.v',l:'121',h:'72',c:'g'}
 ,{cr:'c',t:'E',z:'                        else begin result <= {RES_WIDTH{1\'b0}}; err <= 1\'...',f:'ALU_toverify.v',l:'134',h:'140',c:'g'}
 ]},
-{anchor:'cvg22',items:[{z:'                            case (op_b[2:0])',f:'ALU_toverify.v',l:'123',c:'Y',p:'88.88'}
-,{cr:'c',t:'T',z:'                                3\'d0: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'124',h:'10',c:'g'}
+{anchor:'cvg22',items:[{z:'                            case (op_b[2:0])',f:'ALU_toverify.v',l:'123',c:'G',p:'100.00'}
+,{cr:'c',t:'T',z:'                                3\'d0: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'124',h:'8',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d1: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'125',h:'8',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d2: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'126',h:'6',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d3: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'127',h:'6',c:'g'}
@@ -277,14 +277,14 @@ b5:[{dummy:0},
 ,{cr:'c',t:'T',z:'                                3\'d5: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'129',h:'18',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d6: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'130',h:'6',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d7: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'131',h:'10',c:'g'}
-,{cr:'m',t:'A',z:'                            case (op_b[2:0])',f:'ALU_toverify.v',l:'123',h:'0',c:'r'}
+,{cr:'c',t:'A',z:'                            case (op_b[2:0])',f:'ALU_toverify.v',l:'123',h:'2',c:'g'}
 ]},
 {anchor:'cvg23',items:[{z:'                        if (inp_valid == 2\'b11) begin                    ...',f:'ALU_toverify.v',l:'138',c:'G',p:'100.00'}
 ,{cr:'c',t:'I',z:'                        if (inp_valid == 2\'b11) begin                    ...',f:'ALU_toverify.v',l:'138',h:'56',c:'g'}
 ,{cr:'c',t:'E',z:'                        else begin result <= {RES_WIDTH{1\'b0}}; err <= 1\'...',f:'ALU_toverify.v',l:'151',h:'165',c:'g'}
 ]},
-{anchor:'cvg24',items:[{z:'                            case (op_b[2:0])',f:'ALU_toverify.v',l:'140',c:'Y',p:'88.88'}
-,{cr:'c',t:'T',z:'                                3\'d0: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'141',h:'10',c:'g'}
+{anchor:'cvg24',items:[{z:'                            case (op_b[2:0])',f:'ALU_toverify.v',l:'140',c:'G',p:'100.00'}
+,{cr:'c',t:'T',z:'                                3\'d0: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'141',h:'8',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d1: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'142',h:'8',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d2: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'143',h:'6',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d3: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'144',h:'2',c:'g'}
@@ -292,7 +292,7 @@ b5:[{dummy:0},
 ,{cr:'c',t:'T',z:'                                3\'d5: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'146',h:'2',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d6: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'147',h:'4',c:'g'}
 ,{cr:'c',t:'T',z:'                                3\'d7: result <= {{(RES_WIDTH-DATA_WIDTH){...',f:'ALU_toverify.v',l:'148',h:'12',c:'g'}
-,{cr:'m',t:'A',z:'                            case (op_b[2:0])',f:'ALU_toverify.v',l:'140',h:'0',c:'r'}
+,{cr:'c',t:'A',z:'                            case (op_b[2:0])',f:'ALU_toverify.v',l:'140',h:'2',c:'g'}
 ]},
 {anchor:'cvg25',items:[{z:'                case (cmd)',f:'ALU_toverify.v',l:'160',c:'G',p:'100.00'}
 ,{cr:'c',t:'T',z:'                    4\'d0: begin',f:'ALU_toverify.v',l:'161',h:'211',c:'g'}

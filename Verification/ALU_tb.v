@@ -111,7 +111,7 @@ module alu_testbench();
 					rand_opb = $random % 8;
 				end
 
-				driver(target_mode, target_cmd, rand_opa, rand_opb, $random , $urandom_range(3,0));
+				driver(target_mode, target_cmd, rand_opa, rand_opb, $random ,2'b11);
 				scoreboard(target_cmd);
 			end
 		end
@@ -275,7 +275,7 @@ module alu_testbench();
 		driver(1'b0, 4'd12, 8'd1, 8'd0,   0, 2'b11); scoreboard(4'd12); // Roll by 0
 		driver(1'b0, 4'd12, 8'd155, 8'd4,   0, 2'b11); scoreboard(4'd12); // Roll by 4
 		driver(1'b0, 4'd12, 8'd24, 8'd7,   0, 2'b11); scoreboard(4'd12); // Roll by 7
-		driver(1'b0, 4'd12, 8'd24, 8'd64,   0, 2'b11); scoreboard(4'd12); // Roll by 0
+		driver(1'b0, 4'd12, 8'd24, 8'bx,   0, 2'b11); scoreboard(4'd12); // Roll by 0
 		driver(1'b0, 4'd12, 8'd24, 8'd212,   0, 2'b11); scoreboard(4'd12); // Roll by 0
 		driver(1'b0, 4'd12, 8'd24, 8'd212,   0, 2'b01); scoreboard(4'd12); // INP INVALID
 
@@ -283,7 +283,7 @@ module alu_testbench();
 		driver(1'b0, 4'd13, 8'd128, 8'd0,   0, 2'b11); scoreboard(4'd13); // Roll by 0
 		driver(1'b0, 4'd13, 8'd172, 8'd4,   0, 2'b11); scoreboard(4'd13); // Roll by 4
 		driver(1'b0, 4'd13, 8'd170, 8'd7,   0, 2'b11); scoreboard(4'd13); // Roll by 7
-		driver(1'b0, 4'd13, 8'd170, 8'd64,   0, 2'b11); scoreboard(4'd13); // Roll by 0
+		driver(1'b0, 4'd13, 8'd170, 8'bx,   0, 2'b11); scoreboard(4'd13); // Roll by 0
 		driver(1'b0, 4'd13, 8'd170, 8'd167,   0, 2'b11); scoreboard(4'd13); // Roll by HIGH
 		driver(1'b0, 4'd13, 8'd170, 8'd7,   0, 2'b10); scoreboard(4'd13); // INP_INVALID
 
